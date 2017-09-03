@@ -133,6 +133,13 @@ Billy.printSchedule()
 print("Tommy's Schedule")
 Tommy.printSchedule()
 
+try:
+    file = open("file.txt")
+    for line in file.readlines():
+        print(line)
+except IOError as e:
+    print("There was an error!\n {}".format(e))
+
 
     
 
