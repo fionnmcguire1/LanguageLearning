@@ -23,3 +23,37 @@ else:
 
 #You can also place a simple if inside the print statement
 print("Nice" if x < y else "One")
+
+#Demonstrating a while loop fibonacci series 
+a,b,c = 1,1,5000
+while a < c:
+    print(a)
+    d = a+b
+    b = a
+    a = d
+
+#Demonstrting for loop
+for x in range (0 , 10):
+    print("Index {}".format(x))
+
+def isPrime(x):
+    if x == 0 or x == 1:
+        print("{} is Prime (Debatable)".format(x))
+    else:
+        i = 2
+        checker = True
+        while i < x:
+            if x%i == 0:
+                checker = False
+                exit
+            i+=1
+        if checker == True:
+            print("{} is Prime".format(x))
+        
+i = 0
+while i < 100:
+    isPrime(i)
+    i+=1
+    
+
+    
