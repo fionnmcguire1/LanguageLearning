@@ -11,17 +11,13 @@ prices = [623.69,941.3,553.88,693.82,634.06,798.71,266.17,521.11,704.81,578.07,6
 #print(prices)
 
 def bestTime(prices):
-    i = 0
     buy, sell = 0,0
-    for i in prices:
+    for indexbuy, i in enumerate(prices):
         j = i + 1
-        for j in prices:
+        for indexsell, j in enumerate(prices):
             result = j - i
             if result > (sell-buy):
                 buy,sell = i,j
-            j += 1
-        i += 1
-#     for index, price in enumerate(prices):
     return buy, sell
 start_time = time.time()
 buy,sell = bestTime(prices)
@@ -44,7 +40,7 @@ f.close()
 
 #1st  attempt 38533.44821929932 milliseconds
 #2nd attempt 31401.96990966797 milliseconds with for loops
-#3rd  attempt
+#3rd  attempt 29932.20567703247 milliseconds enumerate
 
 
 
