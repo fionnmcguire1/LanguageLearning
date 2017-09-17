@@ -19,12 +19,12 @@ def bestTime(prices):
             if result > (sell-buy):
                 buy,sell = i,j
     return buy, sell
-start_time = time.time()
-buy,sell = bestTime(prices)
-end_time = time.time()
+#start_time = time.time()
+#buy,sell = bestTime(prices)
+#end_time = time.time()
 
-print("You should buy at €{0} and sell at €{1}".format(buy,sell))
-print("Execution time is {0} milliseconds".format((end_time-start_time)*1000))
+#print("You should buy at €{0} and sell at €{1}".format(buy,sell))
+#print("Execution time is {0} milliseconds".format((end_time-start_time)*1000))
 
 #Creating the array of numbers
 '''
@@ -41,6 +41,101 @@ f.close()
 #1st  attempt 38533.44821929932 milliseconds
 #2nd attempt 31401.96990966797 milliseconds with for loops
 #3rd  attempt 29932.20567703247 milliseconds enumerate
+
+'''
+Make a class, buyer, seller, broker
+
+buyer has a balence
+seller has to have stock available
+
+broker has to ensure the buyer has enough money and check if the seller has stock
+'''
+
+class seller(self,name):
+    self.name = name
+    self.current_stock_level = 2500
+
+    def sell_stock(amount):
+        if self.current_stock_level > amount:
+            self.current_stock_level -= amount
+
+    def return_stock(amount):
+        self.current_stock_level += amount
+
+class buyer(self,balence,name):
+    self.balence = balence
+    self.name = name
+
+    owned_stocks {}
+    def check_balence:
+        return self.balence
+
+    def make_purchase(amount):
+        if amount < self.balence:
+            self.balence -= amount
+
+    def sell_stock:
+        self.balence+=amount
+
+class broker(self,client1,client2,amount,stock_price,buying):
+    self.client1 = client1 #buyer
+    self.client2 = client2 #seller
+    self.amount = amount
+    self.price = stock_price
+    self.buying = buying
+
+    cost = stock_price*amount
+    if buying == true:
+        balence = self.client1.check_balence
+        if balence < cost:
+            return
+        else:
+            if self.client2.stock_level < amount:
+                return
+            else:
+                self.client1.make_purchase(amount)
+                self.client2.sell_stock(amount)
+                self.client1.owned_stocks[self.client2.name] += amount
+    else:
+        if self.client1.owned_stocks[self.client2.name] > amount:
+            self.client1.sell_stock(amount)
+            self.client2.return_stock(amount)
+            return
+    balence = self.client1.check_balence
+    
+
+
+google = new seller("GGL")
+apple = new seller("APP")
+amazon = new seller("AMA")
+bloomberg = new seller("BLB")
+
+fionn = new buyer(40,"Fionn")
+richard = new buyer(80,"Richard")
+brian = new buyer(0,"Brian")
+
+
+trade_it = new broker(buyer,company,amount,stock_price, buying)
+    
+            
+            
+            
+            
+            
+
+        
+            
+        
+    
+    
+    
+    
+    
+        
+        
+        
+    
+
 
 
 
