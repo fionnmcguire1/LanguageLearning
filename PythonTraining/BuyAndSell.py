@@ -51,94 +51,76 @@ seller has to have stock available
 broker has to ensure the buyer has enough money and check if the seller has stock
 '''
 
-class seller(self,name):
-    self.name = name
-    self.current_stock_level = 2500
+class seller():
 
-    def sell_stock(amount):
+    def __init__(self, name):
+        self.name = name
+        self.current_stock_level = 2500
+
+    def sell_stock(self,amount):
         if self.current_stock_level > amount:
             self.current_stock_level -= amount
 
-    def return_stock(amount):
+    def return_stock(self,amount):
         self.current_stock_level += amount
 
-class buyer(self,balence,name):
-    self.balence = balence
-    self.name = name
+class buyer():
 
-    owned_stocks {}
-    def check_balence:
-        return self.balence
+    def __init__(self, balence,name):
+        self.balence = balence
+        self.name = name
 
-    def make_purchase(amount):
+    owned_stocks = {}
+    def check_balence(self):
+        return float(self.balence)
+
+    def make_purchase(self,amount):
         if amount < self.balence:
+            #print(self.balence)
             self.balence -= amount
 
-    def sell_stock:
+    def sell_stock(self):
         self.balence+=amount
 
-class broker(self,client1,client2,amount,stock_price,buying):
-    self.client1 = client1 #buyer
-    self.client2 = client2 #seller
-    self.amount = amount
-    self.price = stock_price
-    self.buying = buying
-
-    cost = stock_price*amount
-    if buying == true:
-        balence = self.client1.check_balence
-        if balence < cost:
-            return
+class broker():
+    def __init__(self,client1,client2,amount,stock_price,buying):       
+        self.client1 = client1 #buyer
+        self.client2 = client2 #seller
+        self.amount = amount
+        self.price = stock_price
+        self.buying = buying
+        
+    def conduct_exchange(self):
+        cost = self.price*self.amount
+        if self.buying == True:
+            balence = self.client1.balence
+            if balence > cost:
+                if self.client2.current_stock_level > self.amount:
+                    #print("333")
+                    self.client1.make_purchase(cost)
+                    self.client2.sell_stock(self.amount)
+ #                   self.client1.owned_stocks[self.client2.name] += self.amount
         else:
-            if self.client2.stock_level < amount:
-                return
-            else:
-                self.client1.make_purchase(amount)
-                self.client2.sell_stock(amount)
-                self.client1.owned_stocks[self.client2.name] += amount
-    else:
-        if self.client1.owned_stocks[self.client2.name] > amount:
-            self.client1.sell_stock(amount)
-            self.client2.return_stock(amount)
-            return
-    balence = self.client1.check_balence
+            if self.client1.owned_stocks[self.client2.name] > self.amount:
+                self.client1.sell_stock(self.amount)
+                self.client2.return_stock(self.amount)
+        balence = self.client1.check_balence
     
 
 
-google = new seller("GGL")
-apple = new seller("APP")
-amazon = new seller("AMA")
-bloomberg = new seller("BLB")
+google = seller("GGL")
+apple = seller("APP")
+amazon = seller("AMA")
+bloomberg = seller("BLB")
 
-fionn = new buyer(40,"Fionn")
-richard = new buyer(80,"Richard")
-brian = new buyer(0,"Brian")
-
-
-trade_it = new broker(buyer,company,amount,stock_price, buying)
-    
-            
-            
-            
-            
-            
-
-        
-            
-        
-    
-    
-    
-    
-    
-        
-        
-        
-    
+fionn = buyer(40,"Fionn")
+richard = buyer(80,"Richard")
+brian = buyer(0,"Brian")
 
 
+trade_it = broker(fionn,bloomberg,2,7, True)
+trade_it.conduct_exchange()
 
-
-
+print("New Balence: €{0}".format(fionn.balence))
 
 
