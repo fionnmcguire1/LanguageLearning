@@ -69,10 +69,7 @@ class buyer():
     def __init__(self, balence,name):
         self.balence = balence
         self.name = name
-
-    owned_stocks = {}
-    def check_balence(self):
-        return float(self.balence)
+        self.owned_stocks = {}
 
     def make_purchase(self,amount):
         if amount < self.balence:
@@ -99,12 +96,14 @@ class broker():
                     #print("333")
                     self.client1.make_purchase(cost)
                     self.client2.sell_stock(self.amount)
- #                   self.client1.owned_stocks[self.client2.name] += self.amount
+                    if self.client2.name in self.client1.owned_stocks.keys():
+                        self.client1.owned_stocks[self.client2.name] += self.amount
+                    else:
+                        self.client1.owned_stocks[self.client2.name] = self.amount                       
         else:
-            if self.client1.owned_stocks[self.client2.name] > self.amount:
-                self.client1.sell_stock(self.amount)
+            if self.client1.owned_stocks[self.client2.name] >= self.amount:
+                self.client1.sell_stock()
                 self.client2.return_stock(self.amount)
-        balence = self.client1.check_balence
     
 
 
@@ -115,12 +114,50 @@ bloomberg = seller("BLB")
 
 fionn = buyer(40,"Fionn")
 richard = buyer(80,"Richard")
-brian = buyer(0,"Brian")
+brian = buyer(5,"Brian")
 
+start_time = time.time()
 
+'''
 trade_it = broker(fionn,bloomberg,2,7, True)
 trade_it.conduct_exchange()
+trade_it.conduct_exchange()
+'''
 
-print("New Balence: €{0}".format(fionn.balence))
+buy,sell = bestTime(prices)
+amount = round(fionn.balence/buy)
+trade_it = broker(fionn,bloomberg,amount,buy, True)
+trade_it.conduct_exchange()
+amount = round(richard.balence/buy)
+trade_it = broker(richard,bloomberg,amount,buy, True)
+trade_it.conduct_exchange()
+amount = round(brian.balence/buy)
+trade_it = broker(brian,bloomberg,amount,buy, True)
+trade_it.conduct_exchange()
+
+print(fionn.owned_stocks)
+amount = fionn.owned_stocks[bloomberg.name]
+trade_it = broker(fionn,bloomberg,amount,sell, False)
+trade_it.conduct_exchange()
+amount = richard.owned_stocks[bloomberg.name]
+trade_it = broker(richard,bloomberg,amount,sell, False)
+trade_it.conduct_exchange()
+amount = brian.owned_stocks[bloomberg.name]
+trade_it = broker(brian,bloomberg,amount,sell, False)
+trade_it.conduct_exchange()
+
+end_time = time.time()
+
+
+print("{0} new balence is €{1}".format(fionn.name,fionn.balence))
+print("{0} new balence is €{1}".format(richard.name,richard.balence))
+print("{0} new balence is €{1}".format(brian.name,brian.balence))
+print("Execution time is {0} milliseconds".format((end_time-start_time)*1000))
+
+
+#trade_it = broker(fionn,bloomberg,2,7, True)
+#trade_it.conduct_exchange()
+
+#print(fionn.owned_stocks)
 
 
