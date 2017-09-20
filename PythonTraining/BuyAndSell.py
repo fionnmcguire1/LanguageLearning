@@ -21,18 +21,18 @@ def bestTime2D(prices):
     sell = [0,0,0,0]
     for indexbuy, index in enumerate(prices):
         for indexbuy2, i in enumerate(index):
-            #print("Hello:{0}".format(i))
-            #indexsell = indexbuy2+1
+            #print(indexbuy2)
             for indexsell, jindex in enumerate(prices):
+                
                 for indexsell2, j in enumerate(jindex):
-                    #print("Hello:{0} There:{1}".format(i,j))
+                    
                     if i !='\n' and j !='\n':
-                        #print("I: {0} J:{1}".format(i,j))
                         
                         result = float(j) - float(i)
-                        #result = j - i
                         if result > (sell[indexsell2]-buy[indexbuy2]):
                             buy[indexbuy2],sell[indexsell2] = float(i),float(j)
+    #print(buy)
+    #print(sell)
     return buy, sell
 
 
@@ -48,7 +48,7 @@ def bestTime2D(prices):
 import random
 f = open('tradefiles.txt', 'w')
 i = 0
-while i < 10000:
+while i < 1000:
     if i ==0:
         a = round(random.uniform(200,600),2)
     else:
@@ -79,9 +79,7 @@ for line in f.readlines():
 #1st  attempt 38533.44821929932 milliseconds
 #2nd attempt 31401.96990966797 milliseconds with for loops
 #3rd  attempt 29932.20567703247 milliseconds enumerate
-buy = []
-sell = []
-buy,sell = bestTime2D(prices)
+
 
 '''
 Make a class, buyer, seller, broker
@@ -147,39 +145,49 @@ class broker():
                 self.client2.return_stock(self.amount)
     
 
-
 google = seller("GGL")
 apple = seller("APP")
 amazon = seller("AMA")
 bloomberg = seller("BLB")
 
-fionn = buyer(400,"Fionn")
-richard = buyer(800,"Richard")
-brian = buyer(500,"Brian")
+company = [google,apple,amazon,bloomberg]
 
+
+fionn = buyer(4000,"Fionn")
+richard = buyer(8000,"Richard")
+brian = buyer(5000,"Brian")
+
+buy = []
+sell = []
 start_time = time.time()
+buy,sell = bestTime2D(prices)
+#print(buy)
+index = 0
+mostprofit = 0
+mostProfitableStock = 0
+while index < len(buy):
+    if (sell[index] - buy[index]) > mostprofit:
+        mostProfitableStock = index
+    index+=1
 
-'''
-buy,sell = bestTime(prices)
-amount = round(fionn.balence/buy)
-trade_it = broker(fionn,bloomberg,amount,buy, True)
+amount = round(fionn.balence/buy[mostProfitableStock])
+trade_it = broker(fionn,company[mostProfitableStock],amount,buy[mostProfitableStock], True)
 trade_it.conduct_exchange()
-amount = round(richard.balence/buy)
-trade_it = broker(richard,bloomberg,amount,buy, True)
+amount = round(richard.balence/buy[mostProfitableStock])
+trade_it = broker(richard,company[mostProfitableStock],amount,buy[mostProfitableStock], True)
 trade_it.conduct_exchange()
-amount = round(brian.balence/buy)
-trade_it = broker(brian,bloomberg,amount,buy, True)
+amount = round(brian.balence/buy[mostProfitableStock])
+trade_it = broker(brian,company[mostProfitableStock],amount,buy[mostProfitableStock], True)
 trade_it.conduct_exchange()
+amount = fionn.owned_stocks[company[mostProfitableStock].name]
+trade_it = broker(fionn,company[mostProfitableStock],amount,sell[mostProfitableStock], False)
+trade_it.conduct_exchange()
+amount = richard.owned_stocks[company[mostProfitableStock].name]
 
-print(fionn.owned_stocks)
-amount = fionn.owned_stocks[bloomberg.name]
-trade_it = broker(fionn,bloomberg,amount,sell, False)
+trade_it = broker(richard,company[mostProfitableStock],amount,sell[mostProfitableStock], False)
 trade_it.conduct_exchange()
-amount = richard.owned_stocks[bloomberg.name]
-trade_it = broker(richard,bloomberg,amount,sell, False)
-trade_it.conduct_exchange()
-amount = brian.owned_stocks[bloomberg.name]
-trade_it = broker(brian,bloomberg,amount,sell, False)
+amount = brian.owned_stocks[company[mostProfitableStock].name]
+trade_it = broker(brian,company[mostProfitableStock],amount,sell[mostProfitableStock], False)
 trade_it.conduct_exchange()
 
 end_time = time.time()
@@ -191,9 +199,3 @@ print("{0} new balence is €{1}".format(brian.name,brian.balence))
 print("Execution time is {0} milliseconds".format((end_time-start_time)*1000))
 
 
-#trade_it = broker(fionn,bloomberg,2,7, True)
-#trade_it.conduct_exchange()
-
-#print(fionn.owned_stocks)
-
-'''
