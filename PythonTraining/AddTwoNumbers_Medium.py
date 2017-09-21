@@ -1,19 +1,8 @@
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution(object):
-    def addTwoNumbers(self, l1, l2):
-        """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
-        l3 = []
-        for index, i in l1:
-            l3.append((l1[index]+l2[index])%10)
+'''
+Author: Fionn Mcguire
+Date: 21-09-2017
+Add 2 linked lists together
+'''
             
             
 class Node(object):
@@ -55,20 +44,44 @@ class LinkedList (object):
                 this_node = this_node.getnext()
         return False
 
-mylist = LinkedList()
-mylist.add_data(5)
-mylist.add_data(11)
-mylist.add_data(17)
-mylist.add_data(6)
-mylist.add_data(8)
-mylist.add_data(3)
-mylist.add_data(34)
-mylist.add_data(1)
-mylist.remove(6)
-print(mylist.remove(8))
+list1 = LinkedList()
+list1.add_data(5)
+list1.add_data(11)
+list1.add_data(17)
+list1.add_data(6)
+list1.add_data(8)
+list1.add_data(3)
+list1.add_data(34)
+list1.add_data(1)
+
+list2 = LinkedList()
+list2.add_data(5)
+list2.add_data(11)
+list2.add_data(17)
+list2.add_data(6)
+list2.add_data(8)
+list2.add_data(3)
+list2.add_data(34)
+list2.add_data(1)
+
+
+def addTwoNumbers(list1, list2):
+    list3 = LinkedList()
+    this_node = list1.root
+    this_node2 = list2.root
+    i = 0
+    while i < list1.getsize():
+        list3.add_data(this_node.getdata()+this_node2.getdata())
+        next_node = this_node.getnext()
+        this_node.setnext(next_node)
+        next_node2 = this_node2.getnext()
+        this_node2.setnext(next_node2)
+        i+=1
+    return(list3)
+list3 = addTwoNumbers(list1, list2)
 
     
-                    
+                   
         
         
         
