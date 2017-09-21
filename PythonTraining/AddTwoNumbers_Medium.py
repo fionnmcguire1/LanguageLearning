@@ -70,18 +70,18 @@ def addTwoNumbers(list1, list2):
     this_node = list1.root
     this_node2 = list2.root
     i = 0
-    while i < list1.getsize():
+    while this_node:       
         list3.add_data(this_node.getdata()+this_node2.getdata())
-        next_node = this_node.getnext()
-        this_node.setnext(next_node)
-        next_node2 = this_node2.getnext()
-        this_node2.setnext(next_node2)
-        i+=1
+        this_node = this_node.getnext()
+        this_node2 = this_node2.getnext()
     return(list3)
 list3 = addTwoNumbers(list1, list2)
+i = 0
+this_node = list3.root
+while this_node:
+    print(this_node.getdata())
+    this_node = this_node.getnext()
 
-    
-                   
         
         
         
