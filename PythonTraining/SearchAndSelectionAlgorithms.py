@@ -30,8 +30,6 @@ min_num = findmin(sample_dataset_ordered)
 print(min_num)
 print(max(sample_dataset))
 
-#sorting_algorithms
-
 
 
 
