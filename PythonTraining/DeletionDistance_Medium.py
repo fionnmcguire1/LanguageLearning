@@ -7,39 +7,17 @@ Description:
 """
 
 def deletion_distance(str1, str2):
-    deletionDistance = 0
-    if len(str1) < len(str2):
-        str3,str4 = str1,str2
-    else:
-        str4,str3 = str1,str2
-    for index, i in enumerate(str3):
-        if str4.find(i) == -1:
-            del str3[index]
-            del str4[index]
-            deletionDistance+=2
-    for index, i in enumerate(str4):
-        if str3.find(i) == -1:
-            del str3[index]
-            del str4[index]
-            deletionDistance+=2
-            
-    if len(str3) < len(str4):
-        str1,str2 = str3,str4
-    else:
-        str2,str1 = str3,str4
-    iterator = 0
-    while iterator < len(str1):
-        if str1[iterator] != str2[iterator]:
-            del str2[iterator]
-            deletionDistance+=1
-            iterator-=1
-        iterator+=1
-    print(str1)
-    print(str2)
-    if str1 == str2:
-        return(deletionDistance)
-    else:
-        return(0)
+    cur = list(range(len(str2) + 1))
+    prev = [0] * (len(str2) + 1)
+    for i in range(len(str1)):
+        cur, prev = prev, cur
+        cur[0] = i + 1
+        for j in range(len(str2)):
+            # Substitution is same as two deletions
+            sub = 0 if str1[i] == str2[j] else 2
+            cur[j+1] = min(prev[j] + sub, cur[j] + 1, prev[j+1] + 1)
+
+    return cur[-1]
 
 
 
