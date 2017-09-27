@@ -6,85 +6,82 @@ Description:
 '''
 import sys
 
-
+#Taking in inputs
+#n,k = dimension size and number of obstacles
 n,k = input().strip().split(' ')
 n,k = [int(n),int(k)]
-a,b = input().strip().split(' ')
-x = 0
 
-while x < n+1:
-    if x == int(a):
-        rQueen = x
-    if x == int(b):
-        cQueen = x
-    x+=1
-rQueen = rQueen-1
-cQueen = cQueen-1
+#Position of queen
+rQueen,cQueen = input().strip().split(' ')
+rQueen,cQueen = [int(rQueen)-1, int(cQueen)-1]
+
+#Building the chess board
 chessBoard = [[0 for i in range(n)] for j in range(n)]
 chessBoard[rQueen][cQueen] = 3
-for a0 in range(k):
+#Taking in the obstacles(other pieces)
+for a in range(k):
     rObstacle,cObstacle = input().strip().split(' ')
     rObstacle,cObstacle = [int(rObstacle),int(cObstacle)]
-    chessBoard[rObstacle,cObstacle] = 2
+    chessBoard[rObstacle-1][cObstacle-1] = 2
 i,j = rQueen,cQueen
+print(chessBoard)
+#Count how many possible moves they can make
 moves = 0
-LeftLateral = False
-RightLateral = False
-TopHorizontal = False
-BottomHorizontal = False
-LeftTopDiagonal = False
-RightTopDiagonal = False
-LeftBottomDiagonal = False
-RightBottomDiagonal = False
+#There are 8 possible directions to go from any point
+#Concidering bottom/top left diagonal ect
+Direction = 0
+'''
+Go through each possible direction
+'''
 while True:
 
-    if LeftLateral == False:
+    if Direction == 0:
         i-=1
         if i > -1:
             if chessBoard[i][cQueen] == 0:
                 moves+=1
             else:
                 i = rQueen
-                LeftLateral = True                
+                Direction+=1                
         else:
                 i = rQueen
-                LeftLateral = True
+                Direction+=1  
                 
-    elif RightLateral == False:
+    elif Direction == 1:
         i+=1
         if i < n:
             if chessBoard[i][cQueen] == 0:
                 moves+=1
             else:
                 i = rQueen
-                RightLateral = True               
+                Direction+=1                
         else:
                 i = rQueen
-                RightLateral = True
-    elif TopHorizontal == False:
+                Direction+=1  
+    elif Direction == 2:
         j+=1
         if j > -1 and j < n:
             if chessBoard[rQueen][j] == 0:
                 moves+=1
             else:
                 j = cQueen
-                TopHorizontal = True
+                Direction+=1  
         else:
                 j = cQueen
-                TopHorizontal = True
-    elif BottomHorizontal == False:
+                Direction+=1  
+    elif Direction == 3:
         j-=1
         if j < n:
             if chessBoard[rQueen][j] == 0:
                 moves+=1
             else:
                 j = cQueen
-                BottomHorizontal = True
+                Direction+=1  
         else:
                 j = cQueen
-                BottomHorizontal = True
+                Direction+=1  
                 
-    elif LeftTopDiagonal == False:
+    elif Direction == 4:
         j-=1
         i-=1
         if j > -1 and i > -1:
@@ -93,12 +90,12 @@ while True:
             else:
                 j = cQueen
                 i = rQueen
-                LeftTopDiagonal = True
+                Direction+=1  
         else:
                 j = cQueen
                 i = rQueen
-                LeftTopDiagonal = True
-    elif RightBottomDiagonal == False:
+                Direction+=1  
+    elif Direction == 5:
         j+=1
         i+=1
         if j < n and i < n:
@@ -107,12 +104,12 @@ while True:
             else:
                 j = cQueen
                 i = rQueen
-                RightBottomDiagonal = True
+                Direction+=1  
         else:
                 j = cQueen
                 i = rQueen
-                RightBottomDiagonal = True
-    elif RightTopDiagonal == False:
+                Direction+=1  
+    elif Direction == 6:
         j-=1
         i+=1
         if j > -1 and i < n:
@@ -121,12 +118,12 @@ while True:
             else:
                 j = cQueen
                 i = rQueen
-                RightTopDiagonal = True
+                Direction+=1  
         else:
                 j = cQueen
                 i = rQueen
-                RightTopDiagonal = True
-    elif LeftBottomDiagonal == False:
+                Direction+=1  
+    elif Direction == 7:
         j+=1
         i-=1
         if j < n and i > -1:
@@ -135,11 +132,11 @@ while True:
             else:
                 j = cQueen
                 i = rQueen
-                LeftBottomDiagonal = True
+                Direction+=1  
         else:
                 j = cQueen
                 i = rQueen
-                LeftBottomDiagonal = True
+                Direction+=1  
     else:
         print(moves)
         break
