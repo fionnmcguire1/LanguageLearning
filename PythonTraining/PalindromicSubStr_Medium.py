@@ -9,22 +9,18 @@ Description: Return the largest pallindromic substr
 
 
 
+def LongestPalindrome(s):
+    Longest = 0
+    pallindomicSubStr = ''
+    if s != s[::-1]:            
+        for i in range(len(s)+1):
+            j = i+1
+            for j in range(len(s)+1):
+                if s[i:j] == s[i:j][::-1]:
+                    if len(s[i:j]) > len(pallindomicSubStr):
+                        pallindomicSubStr = s[i:j]
+        print(pallindomicSubStr)
+    else:
+        print(s)
 
-class Solution(object):
-    def longestPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        Longest = 0
-        if s != s[::-1]:            
-            for i in range(len(s)):
-                j = i+1
-                for j in range(len(s)):
-                    if s[i:j] == s[i:j][::-1]:
-                        if len(s[i:j]) > Longest:
-                            Longest = len(s[i:j])
-                            pallindomicSubStr = s[i:j]
-            return pallindomicSubStr
-        else:
-            return s
+LongestPalindrome("vaomxdtiuwqlwhgutkhxxhccsgvyoaccuicgybnqnslogtqhblegfudagpxfvjdacsxgevvepuwthdtybgflsxjdmmfumyqgpxatvdypjmlapccaxwkuxkilqqgpihyepkilhlfkdrbsefinitdcaghqmhylnixidrygdnzmgubeybczjceiybowglkywrpkfcwpsjbkcpnvfbxnpuqzhotzspgebptnhwevbkcueyzecdrjpbpxemagnwmtwikmkpqluwmvyswvxghajknjxfazshsvjkstkezdlbnkwxawlwkqnxghjzyigkvqpapvsntojnxlmtywdrommoltpbvxwqyijpkirvndwpgufgjelqvwffpuycqfwenhzrbzbdtupyutgccdjyvhptnuhxdwbmdcbpfvxvtfryszhaakwshrjseonfvjrrdefyxefqfvadlwmedpvnozobftnnsutegrtxhwitrwdpfienhdbvvykoynrsbpmzjtotjxbvemgoxreiveakmmbbvbmfbbnyfxwrueswdlxvuelbkrdxlutyukppkzjnmfmclqpkwzyylwlzsvriwomchzzqwqglpflaepoxcnnewzstvegyaowwhgvcwjhbbstvzhhvghigoazbjiikglbqlxlccrwqvyqxpbtpoqjliziwmdkzfsrqtqdkeniulsavsfqsjwnvpprvczcujihoqeanobhlsvbzmgflhykndfydbxatskf")
