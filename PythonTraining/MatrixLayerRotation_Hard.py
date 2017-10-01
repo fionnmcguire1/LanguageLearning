@@ -17,21 +17,17 @@ Sample Output:
 5 9 13 14
 '''
 
-n= map(int,input().split(' '))
+n= input().split(' ')
 
-ary = [[0 for i in range(n[0])] for j in range(n[1])]
-
-for i in range(n[1]):
-    l = map(int,input().split(' '))
-    for j in range(n[0]):
-        colMove = n[2]-i
-        if colMove < n[2]
-        rowMove = 
-        
-'''
-00,01,02,03,04,05
-10,11,12,13,14,15
-20,21,22,23,24,25
-30,31,32,33,34,35
-40,41,42,43,44,45
-'''
+ary = [[0 for i in range(int(n[0]))] for j in range(int(n[1]))]
+a,b = 0
+for i in range(int(n[1])):
+    l = input().split(' ')
+    for j in range(int(n[1])):
+        ary[i][j] = l[j] 
+for hello in range(int(n[2])):
+    for i in range(int(n[1])):
+        for j in range(int(n[1])):
+            if j-1 == i:
+                a+=1
+            if j+1 == :

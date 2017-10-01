@@ -4,6 +4,7 @@ Date: 25-09-2017
 Description:
     Count the number of moves the queen can make given the position of obstacles on a set size board
 '''
+#First Approach
 import sys
 
 #Taking in inputs
@@ -141,3 +142,59 @@ while True:
         print(moves)
         break
             
+#Second Approach
+#This works out a list of directions and calculates the moves from that obstacle
+#This approach has not been tested but should reduce the processing conciderably
+#This approach covers worst cast as it reads the obstacles on the way in
+'''
+#Taking in inputs
+#n,k = dimension size and number of obstacles
+n,k = input().strip().split(' ')
+n,k = [int(n),int(k)]
+
+#Position of queen
+rQueen,cQueen = input().strip().split(' ')
+rQueen,cQueen = [int(rQueen), int(cQueen)]
+#LH,RH,TV,BV,LBD,RBD,LTD,RTD
+movingDirections = [n,n,n,n,n,n,n,n]
+#Taking in the obstacles(other pieces)
+for a in range(k):
+    rObstacle,cObstacle = input().strip().split(' ')
+    rObstacle,cObstacle = [int(rObstacle),int(cObstacle)]
+    if rObstacle == rQueen:
+        if cObstacle < cQueen:
+            if ((cQueen - cObstacle)-1) < movingDirections[0]:
+                movingDirections[0] = ((cQueen - cObstacle)-1)
+        elif cObstacle > cQueen:
+            if ((cObstacle - cQueen)-1) < movingDirections[1]:
+                movingDirections[1] = ((cQueen - cObstacle)-1)    
+    elif cObstacle == cQueen:
+        if rObstacle < rQueen:
+            if ((rQueen - rObstacle)-1) < movingDirections[3]:
+                movingDirections[3] = ((rQueen - rObstacle)-1)
+        elif rObstacle > rQueen:
+            if ((rObstacle - rQueen)-1) < movingDirections[2]:
+                movingDirections[2] = ((rQueen - rObstacle)-1)             
+    elif (cObstacle < cQueen) and (rObstacle < rQueen):
+        if (cQueen - cObstacle) == (rQueen - rObstacle):
+            if ((cQueen - cObstacle)-1) < movingDirections[4]:
+                movingDirections[4] = ((cQueen - cObstacle)-1)
+    elif (cObstacle > cQueen) and (rObstacle < rQueen):
+        if (cObstacle - cQueen) == (rQueen - rObstacle):
+            if ((cObstacle - cQueen)-1) < movingDirections[5]:
+                movingDirections[5] = ((cObstacle - cQueen)-1)             
+    elif (cObstacle < cQueen) and (rObstacle > rQueen):
+        if (cQueen - cObstacle) == (rObstacle - rQueen):
+            if ((cQueen - cObstacle)-1) < movingDirections[6]:
+                movingDirections[6] = ((cQueen - cObstacle)-1)
+    elif (cObstacle > cQueen) and (rObstacle > rQueen):
+        if (cObstacle - cQueen) == (rObstacle - rQueen):
+            if ((cObstacle - cQueen)-1) < movingDirections[7]:
+                movingDirections[7] = ((cObstacle - cQueen)-1)   
+moves = 0
+print(movingDirections)
+for i in movingDirections:
+    if i != n:
+        moves+=i
+print(moves)
+'''
