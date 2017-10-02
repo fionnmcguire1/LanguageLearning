@@ -147,13 +147,6 @@ while True:
 #This approach has not been tested but should reduce the processing conciderably
 #This approach covers worst cast as it reads the obstacles on the way in
 '''
-#!/bin/python3
-'''
-Author: Fionn Mcguire
-Date: 25-09-2017
-Description:
-    Count the number of moves the queen can make given the position of obstacles on a set size board
-'''
 import sys
 
 #Taking in inputs
@@ -164,40 +157,49 @@ n,k = [int(n),int(k)]
 #Position of queen
 rQueen,cQueen = input().strip().split(' ')
 rQueen,cQueen = [int(rQueen), int(cQueen)]
+#0,2,1,1,2,2,1,1
 #LH,RH,TV,BV,LBD,RBD,LTD,RTD
-movingDirections = [rQueen-1,n-rQueen,n-cQueen,cQueen-1,rQueen-1,n-rQueen,n-rQueen,n-rQueen]
+movingDirections = [cQueen-1,n-cQueen,n-rQueen,rQueen-1,cQueen-1,n-cQueen,n-rQueen,n-rQueen]
+#print(movingDirections)
 #Taking in the obstacles(other pieces)
 for a in range(k):
     rObstacle,cObstacle = input().strip().split(' ')
     rObstacle,cObstacle = [int(rObstacle),int(cObstacle)]
     if rObstacle == rQueen:
         #LH
+        #Correct
         if cObstacle < cQueen:
             if ((cQueen - cObstacle)-1) < movingDirections[0]:
                 movingDirections[0] = ((cQueen - cObstacle)-1)
         #RH
+        #Incorrect needs to be +1
         elif cObstacle > cQueen:
             if ((cObstacle - cQueen)-1) < movingDirections[1]:
-                movingDirections[1] = ((cQueen - cObstacle)-1)    
+                movingDirections[1] = ((cObstacle - cQueen)-1)    
     elif cObstacle == cQueen:
         #TV
         if rObstacle < rQueen:
+            #Correct
             if ((rQueen - rObstacle)-1) < movingDirections[3]:
                 movingDirections[3] = ((rQueen - rObstacle)-1)
         #BV
         elif rObstacle > rQueen:
-            if ((rObstacle - rQueen)-1) < movingDirections[2]:
+            #Wrong
+            if ((rQueen - rObstacle)-1) < movingDirections[2]:
                 movingDirections[2] = ((rQueen - rObstacle)-1)             
     elif (cObstacle < cQueen) and (rObstacle < rQueen):
         if (cQueen - cObstacle) == (rQueen - rObstacle):
+            #Wrong expected -1
             if ((cQueen - cObstacle)-1) < movingDirections[4]:
                 movingDirections[4] = ((cQueen - cObstacle)-1)
     elif (cObstacle > cQueen) and (rObstacle < rQueen):
         if (cObstacle - cQueen) == (rQueen - rObstacle):
+            #Wrong expected +1
             if ((cObstacle - cQueen)-1) < movingDirections[5]:
                 movingDirections[5] = ((cObstacle - cQueen)-1)             
     elif (cObstacle < cQueen) and (rObstacle > rQueen):
         if (cQueen - cObstacle) == (rObstacle - rQueen):
+            #Correct
             if ((cQueen - cObstacle)-1) < movingDirections[6]:
                 movingDirections[6] = ((cQueen - cObstacle)-1)
     elif (cObstacle > cQueen) and (rObstacle > rQueen):
