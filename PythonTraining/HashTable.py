@@ -27,14 +27,14 @@ Note: Untilize as much info on the key as possible. This increases the size of t
 chance of collisions making insert, delete and lookup much faster.
 '''
 
-table = [None]*10
+table = [[] for a in range(10)]
 def hashingFunction(num):
     return num%10
 def insert(table,key,value):
-    table[hashingFunction(key)] = value
+    table[hashingFunction(key)].append(value)
 
 insert(table,115,"Hey")
-insert(table,16,"hi")
+insert(table,115,"hi")
 insert(table,7,"hello")
 insert(table,8943,"yellow")
 insert(table,33,"ahoy")
