@@ -87,22 +87,29 @@ print(arr1)
 '''
 
 def MergeSort(arr,sample_dataset_ordered):
-    counter1 = 0
-    counter2 = 0
-    sorted_ary = []
-    while counter1 < len(arr) and counter2 < len(sample_dataset_ordered):
-        if arr[counter1] < sample_dataset_ordered[counter2]:
-            sorted_ary.append(arr[counter1])
-            counter1+=1
-        else:
-            sorted_ary.append(sample_dataset_ordered[counter2])
-            counter2+=1
-    if counter1 == len(arr):
-        sorted_ary+=sample_dataset_ordered[counter2:]
+    if arr[-1] < sample_dataset_ordered[0]:
+        sorted_ary = arr+sample_dataset_ordered
+    elif arr[0] > sample_dataset_ordered[-1]:
+        sorted_ary = sample_dataset_ordered+arr
     else:
-        sorted_ary+=arr[counter1:]
+        counter1 = 0
+        counter2 = 0
+        sorted_ary = []
+        while counter1 < len(arr) and counter2 < len(sample_dataset_ordered):
+            if arr[counter1] < sample_dataset_ordered[counter2]:
+                sorted_ary.append(arr[counter1])
+                counter1+=1
+            else:
+                sorted_ary.append(sample_dataset_ordered[counter2])
+                counter2+=1
+        if counter1 == len(arr):
+            sorted_ary+=sample_dataset_ordered[counter2:]
+        else:
+            sorted_ary+=arr[counter1:]
     print(sorted_ary)
 
+#arr = [0,1,2,3,4,5]
+#sample_dataset_ordered = [6,7,8,9,10]
 MergeSort(arr,sample_dataset_ordered)
         
         
