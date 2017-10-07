@@ -9,7 +9,7 @@ Description:
 sample_dataset = [0,1,2,3,6,7,5,4,56,765,32,45,98,-22,4,5,-456,1,8,88,-11,-0]
 
 #ordered list
-sample_dataset_ordered = [0,1,4,7,9,44,66,77,87,98,]
+sample_dataset_ordered = [0,1,4,7,9,44,66,77,87,98,100]
 
 
 #find min
@@ -31,8 +31,23 @@ print(min_num)
 print(max(sample_dataset))
 
 
+sample_dataset_ordered = [0,1,4,7,9,44,66,77,87,98,100]
 
-
+def BinarySearch(arr,value):
+    lowIndex = 1
+    highIndex = len(arr)
+    while lowIndex <= highIndex and (highIndex - lowIndex) > 1:        
+        middle = int(round((highIndex + lowIndex)/2))
+        if arr[middle] == value:
+            return middle
+        elif arr[middle] > value:
+            highIndex = middle
+        elif arr[middle] < value:
+            lowIndex = middle
+    return "Not found"
+num = BinarySearch(sample_dataset_ordered,112)
+print(num)
+    
 
 
 
