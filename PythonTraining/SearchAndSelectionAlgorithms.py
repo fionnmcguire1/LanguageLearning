@@ -49,7 +49,7 @@ def BinarySearch(arr,value):
 '''num = BinarySearch(sample_dataset_ordered,112)
 print(num)'''
 
-
+#Implement quicksort algorithm to sort a list in ascending order
 def partition(array, begin, end):
     pivot = begin
     for i in range(begin+1, end+1):
@@ -71,7 +71,39 @@ def quicksort(array, begin=0, end=None):
         _quicksort(array, begin, pivot-1)
         _quicksort(array, pivot+1, end)
     return _quicksort(array, begin, end)
-
+'''
 print(sample_dataset)
 quicksort(sample_dataset)
-print(sample_dataset)
+print(sample_dataset)'''
+
+#Second sorted list
+arr = [63,65,78,91,92,93,95,97]
+#arr1 = [0,1,2,3,4,5]
+'''
+arr+=arr1
+arr1.append(6)
+print(arr)
+print(arr1)
+'''
+
+def MergeSort(arr,sample_dataset_ordered):
+    counter1 = 0
+    counter2 = 0
+    sorted_ary = []
+    while counter1 < len(arr) and counter2 < len(sample_dataset_ordered):
+        if arr[counter1] < sample_dataset_ordered[counter2]:
+            sorted_ary.append(arr[counter1])
+            counter1+=1
+        else:
+            sorted_ary.append(sample_dataset_ordered[counter2])
+            counter2+=1
+    if counter1 == len(arr):
+        sorted_ary+=sample_dataset_ordered[counter2:]
+    else:
+        sorted_ary+=arr[counter1:]
+    print(sorted_ary)
+
+MergeSort(arr,sample_dataset_ordered)
+        
+        
+    
