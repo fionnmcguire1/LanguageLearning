@@ -51,24 +51,33 @@ class Linkedlist(object):
             else:
                 this_node = this_node.getnext()
         return False
-
+#Appending data to the list
 list1 = Linkedlist()
-list1.add(1)
-list1.add(2)
-list1.add(3)
-list1.add(4)
-list1.add(5)
-list1.add(6)
-list1.add(7)
-list1.add(8)
-list1.add(9)
-list1.add(10)
-list1.add(11)
+list2 = Linkedlist()
+list3 = Linkedlist()
+for i in range(20):
+    list1.add(i)
+    list2.add(i**2)
 
+
+#Adding 2 linked lists
 current_node = list1.root
+current_node2 = list2.root
+while current_node:
+    result = current_node.getdata()+current_node2.getdata()
+    list3.add(result)
+    current_node = current_node.getnext()
+    current_node2 = current_node2.getnext()
+
+
+#Printing the resulting list
+current_node = list3.root
 while current_node:
     print(current_node.getdata())
     current_node = current_node.getnext()
+
+
+
 
                 
         
