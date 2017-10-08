@@ -34,10 +34,10 @@ class LinkedList (object):
         while this_node:
             if this_node.getdata() == d:
                 if prev_node:
-                    prev_node.setdata(this_node.getnext())
+                    prev_node.setnext(this_node.getnext())
                 else:
-                    self.root = this_node
-                self.size -=1
+                    self.root = this_node.getnext()
+                self.size-=1
                 return True
             else:
                 prev_node = this_node
