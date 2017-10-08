@@ -31,7 +31,7 @@ class Linkedlist(object):
         return self.size
     def add(self,d):
         new_node = Node(d,self.root)
-        if self.getsize() > 1: 
+        if self.getsize() > 0: 
             next_node = new_node.getnext()
             next_node.setprev(new_node)
         self.root = new_node
@@ -69,12 +69,37 @@ while current_node:
     current_node = current_node.getnext()
     current_node2 = current_node2.getnext()
 
-
 #Printing the resulting list
 current_node = list3.root
 while current_node:
-    #print(current_node.getdata())
+    print(current_node.getdata())
     current_node = current_node.getnext()
+
+
+#Reverse a linked list
+current_node = list3.root
+counter = 0
+while current_node:
+    if counter == list3.getsize()-1:
+        list3.root = current_node
+    next_node = current_node.getnext()
+    if current_node.getprev():
+        prev_node = current_node.getprev()
+        current_node.setprev(next_node)
+        current_node.setnext(prev_node)
+    else:
+        current_node.setprev(current_node.getnext())
+        current_node.setnext(None)
+    current_node = current_node.getprev()
+    counter+=1
+
+current_node = list3.root
+while current_node:
+    print(current_node.getdata())
+    current_node = current_node.getnext()        
+        
+        
+        
 
 
     
