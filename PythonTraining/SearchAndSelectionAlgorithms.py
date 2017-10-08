@@ -98,13 +98,9 @@ def mergeSort(arr1,arr2):
     arr3 = []
     if len(arr1) > 0 and len(arr2) > 0:
         while 1:
-            if counter1 >= len(arr1):
-                arr3+=arr2[counter2:]
-                break
-            elif counter2 >= len(arr2):
-                arr3+=arr1[counter1:]
-                break
-                
+            if counter1 >= len(arr1) or counter2 >= len(arr2):
+                arr3+=(arr2[counter2:]+arr1[counter1:])
+                break                
             if arr1[counter1] < arr2[counter2]:
                 arr3.append(arr1[counter1])
                 counter1+=1
@@ -117,7 +113,7 @@ def mergeSort(arr1,arr2):
         return arr3
 
 array3 = [0,1,2,3,4]
-array4 = []
+array4 = [3]
 print(mergeSort(array3,array4))
         
         
