@@ -73,13 +73,11 @@ while current_node:
 #Printing the resulting list
 current_node = list3.root
 while current_node:
-    print(current_node.getdata())
+    #print(current_node.getdata())
     current_node = current_node.getnext()
 
 
-
-
-                
+    
         
 
 
