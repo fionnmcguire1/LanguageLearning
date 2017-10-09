@@ -74,3 +74,28 @@ elif N%2 == 0 and (N in range(2,5) or N > 20):
 
 
 '''Day 4'''
+class Person:
+    def __init__(self,initialAge):
+        # Add some more code to run some checks on initialAge
+        self.age = initialAge
+
+    def amIOld(self):
+        if self.age < 0:
+            self.age = 0
+            print("Age is not valid, setting age to 0.")
+        if self.age < 13:
+            print("You are young.")
+        elif self.age in range(13,18):
+            print("You are a teenager.")
+        else:
+            print("You are old.")
+        # Do some computations in here and print out the correct statement to the console
+    def yearPasses(self):
+        self.age+=1
+        # Increment the age of the person in here
+
+'''Day 5'''
+#Dealing with loops
+n = int(input().strip())
+for i in range(1,11):
+    print ("{0} x {1} = {2}".format(str(n),str(i),str(n*i)))
