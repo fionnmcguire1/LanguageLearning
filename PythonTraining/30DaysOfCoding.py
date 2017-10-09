@@ -113,3 +113,13 @@ for i in range(n):
             str1+= strInQuestion[j]
     str2+= " "+str1
     print(str2)
+
+'''Day 7 arrays'''
+n = int(input().strip())
+arr = [int(arr_temp) for arr_temp in input().strip().split(' ')]
+n = n-1
+str1 = ""
+while n > -1:
+    str1+= str(arr[n])+" "
+    n-=1
+print(str1)
