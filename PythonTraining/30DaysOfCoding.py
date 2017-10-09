@@ -138,3 +138,14 @@ for i in range(size):
         print("{}={}".format(query,phonebook[query]))
     else:
         print("Not found")
+
+'''Day 9'''
+#Recursion
+def factorial(n):
+    # Complete this function
+    result = 1
+    i = n
+    while i > 0:
+        result = i*result
+        i-=1
+    return result
