@@ -62,3 +62,10 @@ def get_total_cost_of_meal():
 
 # Print your result
 print("The total meal cost is " + get_total_cost_of_meal() + " dollars.")
+
+'''Day 3'''
+N = int(input().strip())
+if (N%2 == 1) or (N%2 == 0 and N in range(6,21)):
+    print("Weird")
+elif N%2 == 0 and (N in range(2,5) or N > 20):
+    print("Not Weird")
