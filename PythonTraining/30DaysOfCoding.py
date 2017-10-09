@@ -114,7 +114,7 @@ for i in range(n):
     str2+= " "+str1
     print(str2)
 
-'''Day 7 arrays'''
+'''Day 7'''
 n = int(input().strip())
 arr = [int(arr_temp) for arr_temp in input().strip().split(' ')]
 n = n-1
@@ -123,3 +123,18 @@ while n > -1:
     str1+= str(arr[n])+" "
     n-=1
 print(str1)
+
+'''Day 8'''
+#Dictionaries
+size = int(input())
+phonebook = {}
+for i in range(size):
+    contact = input().split(' ')
+    phonebook[contact[0]] = contact[1]
+
+for i in range(size):
+    query = str(input())
+    if str(query) in phonebook.keys():
+        print("{}={}".format(query,phonebook[query]))
+    else:
+        print("Not found")
