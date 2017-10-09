@@ -99,3 +99,17 @@ class Person:
 n = int(input().strip())
 for i in range(1,11):
     print ("{0} x {1} = {2}".format(str(n),str(i),str(n*i)))
+
+'''Day 6'''
+n = int(input())
+for i in range(n):
+    str1 = ""
+    str2 = ""
+    strInQuestion = str(input())
+    for j in range(len(strInQuestion)):
+        if j%2==0:
+            str2+= strInQuestion[j]
+        else:
+            str1+= strInQuestion[j]
+    str2+= " "+str1
+    print(str2)
