@@ -149,3 +149,19 @@ def factorial(n):
         result = i*result
         i-=1
     return result
+
+'''Day 10'''
+#Binary conversion
+n = int(input().strip())
+str1=bin(n)
+str1 = str1[2:]
+counter = 1
+bestcounter = 1
+for i in range(len(str1)-1):
+    if str1[i] == '1' and str1[i+1] == str1[i]:
+        counter+=1
+    else:
+        if counter > bestcounter:
+            bestcounter = counter
+        counter = 1
+print(bestcounter)
