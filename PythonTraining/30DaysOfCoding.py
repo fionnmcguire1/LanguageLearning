@@ -43,6 +43,7 @@ str2 = s+str1
 print(str2)
 
 '''Day 2'''
+#Intro to arithmetic operations
 def get_total_cost_of_meal():
     # original meal price
     meal_cost = float(input())
@@ -64,8 +65,12 @@ def get_total_cost_of_meal():
 print("The total meal cost is " + get_total_cost_of_meal() + " dollars.")
 
 '''Day 3'''
+#Intro to if statements
 N = int(input().strip())
 if (N%2 == 1) or (N%2 == 0 and N in range(6,21)):
     print("Weird")
 elif N%2 == 0 and (N in range(2,5) or N > 20):
     print("Not Weird")
+
+
+'''Day 4'''
