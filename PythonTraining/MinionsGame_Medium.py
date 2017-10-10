@@ -16,7 +16,7 @@ def minion_game(string):
         checker = True
         if v.find(string[j]) == -1:
             checker = False
-        for i in range(length+1):
+        for i in range(j,length+1):
             sub = string[j:i]
             if sub == string[j:j+len(sub)]  and len(sub) != 0:
                 if checker == False:
