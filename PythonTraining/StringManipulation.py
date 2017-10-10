@@ -37,3 +37,24 @@ def count_substring(string, sub_string):
         if string[index:index+length] == sub_string:
             counter+=1
     return counter
+
+'''Figure out the properties of a string'''
+s = input()
+alphanum,alpha,digets,lower,upper = False,False,False,False,False
+for i in s:
+    if i.isalnum():
+        alphanum = True
+        if i.isalpha():
+            alpha = True
+            if i.islower():
+                lower = True
+            elif i.isupper():
+                upper = True
+        if i.isdigit() :
+            digets = True
+
+print(alphanum)
+print(alpha)
+print(digets)
+print(lower)
+print(upper)
