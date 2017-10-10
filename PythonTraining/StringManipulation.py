@@ -23,3 +23,7 @@ def swap_case(s):
         else:
             str1+=i.upper()
     return str1
+
+'''Split and join a string'''
+def split_and_join(line):
+    return "-".join(line.split(' '))
