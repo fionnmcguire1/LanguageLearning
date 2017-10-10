@@ -5,11 +5,6 @@ Description: Working with and manipulating various data structures
 
 '''
 
-
-
-
-
-
 def leftRotation(a, d):
     # Complete this function
     if d != 0:
