@@ -12,3 +12,14 @@ for i in range(1,N,2):
 print ("{}WELCOME{}".format("-"*N,"-"*N))
 for i in range(N-2,-1,-2):
     print ("{}{}{}".format("-"*(M//2-(i+(i//2))),".|."*((i)),"-"*(M//2-(i+(i//2)))))
+
+
+'''Swap cases in string'''
+def swap_case(s):
+    str1 = ""
+    for i in s:
+        if i.isupper():
+            str1+=i.lower()
+        else:
+            str1+=i.upper()
+    return str1
