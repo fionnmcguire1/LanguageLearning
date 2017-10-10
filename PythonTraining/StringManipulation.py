@@ -27,3 +27,13 @@ def swap_case(s):
 '''Split and join a string'''
 def split_and_join(line):
     return "-".join(line.split(' '))
+
+
+'''Find number of occurances of substring in string'''
+def count_substring(string, sub_string):
+    length = len(sub_string)
+    counter = 0
+    for index,i in enumerate(string):
+        if string[index:index+length] == sub_string:
+            counter+=1
+    return counter
