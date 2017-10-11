@@ -193,18 +193,51 @@ def almost_there(s1,s2):
                 elif len1 > len2: i+=1
                 else: j+=1
 
-            if s1[i] != s2[j]: checker+=1
+            if s1[i] != s2[j]:
+                checker+=1
                 if checker > 1: return False
         return True
     else: return False
 
 s1,s2 = "pale", "ple"
-print(almost_there(s1,s2))
+#print(almost_there(s1,s2))
 s1,s2 = "pale", "pales"
-print(almost_there(s1,s2))
+#print(almost_there(s1,s2))
 s1,s2 = "pale", "bale"
-print(almost_there(s1,s2))
+#print(almost_there(s1,s2))
 s1,s2 = "ple", "plea"
-print(almost_there(s1,s2))
+#print(almost_there(s1,s2))
 s1,s2 = "sarah", "John"
-print(almost_there(s1,s2))
+#print(almost_there(s1,s2))
+
+'''Compress a string by repeating characters'''
+def Compressed(s):
+    n = len(s)
+    counter = 1
+    compressed = ""
+    for i in range(n-1):
+        if s[i] == s[i+1]:
+            counter+=1
+        else:
+            compressed+=s[i]+str(counter)
+            counter = 1
+    if n > len(compressed):
+        return compressed
+    else:
+        return s
+
+s = "aaaabbbbbcccdeeeffg"
+print(s)
+print(Compressed(s))
+s = "aaabbbcccdeeeffg"
+print(s)
+print(Compressed(s))
+s = "abbbbbeeffg"
+print(s)
+print(Compressed(s))
+s = "fionnmcguire"
+print(s)
+print(Compressed(s))
+s = "ffffiiooonnnnnmmcccgguuiirrre"
+print(s)
+print(Compressed(s))
