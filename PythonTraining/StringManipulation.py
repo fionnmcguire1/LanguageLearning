@@ -225,7 +225,7 @@ def Compressed(s):
         return compressed
     else:
         return s
-
+'''
 s = "aaaabbbbbcccdeeeffg"
 print(s)
 print(Compressed(s))
@@ -240,4 +240,4 @@ print(s)
 print(Compressed(s))
 s = "ffffiiooonnnnnmmcccgguuiirrre"
 print(s)
-print(Compressed(s))
+print(Compressed(s))'''
