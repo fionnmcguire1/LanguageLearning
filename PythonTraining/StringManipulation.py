@@ -184,26 +184,20 @@ def almost_there(s1,s2):
     s1,s2 = s1.lower(),s2.lower()
     checker = 0
     if len1 == len2 or (len1-len2) == 1 or (len2-len1) == 1:
-        if len1 > len2:
-            n = len2
-        else:
-            n = len1
+        if len1 > len2: n = len2
+        else: n = len1
         for i in range(n):
             j = i
             if checker>=1:
-                if len1 == len2:
-                    pass
-                elif len1 > len2:
-                    i+=1
-                else:
-                    j+=1
-            if s1[i] != s2[j]:
-                checker+=1
-                if checker > 1:
-                    return False
+                if len1 == len2: pass
+                elif len1 > len2: i+=1
+                else: j+=1
+
+            if s1[i] != s2[j]: checker+=1
+                if checker > 1: return False
         return True
-    else:
-        return False
+    else: return False
+
 s1,s2 = "pale", "ple"
 print(almost_there(s1,s2))
 s1,s2 = "pale", "pales"
