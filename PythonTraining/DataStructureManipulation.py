@@ -34,8 +34,8 @@ def leftRotation(a, d):
 m = [[i for i in range(10)] for j in range(10)]
 #Printing this easier to read with loop
 #print(m)
-for i in m:
-    print(i)
+#for i in m:
+#print(i)
 class Node(object):
     def __init__(self,d,n = None,p = None):
         self.data = d
@@ -54,43 +54,82 @@ class Linkedlist(object):
         self.root = new_node
         self.size+=1
 
-def RotateMatrix(m,n,mode):
+def RotateMatrix(m,n,mode,arrOfLists = None):
     dimr = len(m)
     dimc = len(m[0])
     layer = 0
     numLayers = dimr//2
-    arrOfLists = []
 
-    list1 = Linkedlist()
     numOfCells = (2*dimr)+(2*dimc)-4
     Bottom = dimr-layer
     Right = (Bottom+(dimc-layer-2))
     Top = (Right+(dimr-layer))
     Left = (Top+(dimr-layer))
+    if mode == 1:
+        currentList = arrOfLists[0]
+        currentNode = currentList.root
+        for i in range(n-1):
+            if currentNode.next:
+                currentNode = currentNode.next
+            else:
+                currentNode = currentList.root
+        data = currentNode.data
+    else:
+        list1 = Linkedlist()
+        arrOfLists = []
 
     for i in range(numOfCells):
         #BOTTOM
+
         if i in range(Bottom):
-            val = m[layer][i]
-            list1.add(val)
+            if mode == 0:
+                val = m[layer][i]
+            else:
+                print(data)
+                m[layer][i] = data
         #RIGHT
         elif i in range(Bottom,Right):
+            if mode == 0:
                 val = m[i-dimr][dimr-1]
-                list1.add(val)
+            else:
+                m[i-dimr][dimr-1] = data
             #TOP
         elif i in range(Right,Top):
-                val = m[dimr-layer-1][(i-Right)*-1-1]
-                list1.add(val)
+            if mode == 0:
+                val = m[Bottom-1][(i-Right)*-1-1]
+            else:
+                m[Bottom-1][(i-Right)*-1-1] = data
             #LEFT
         elif i in range(Top,numOfCells):
+            if mode == 0:
                 val = m[(i-Top)*-1][layer]
-                list1.add(val)
-    arrOfLists.append(list1)
+            else:
+                m[(i-Top)*-1][layer] = data
+
+        if mode == 1:
+            if currentNode.next:
+                currentNode = currentNode.next
+            else:
+                currentNode = currentList.root
+            data = currentNode.data
+        else:
+            list1.add(val)
+    if mode == 0:
+        arrOfLists.append(list1)
+    '''
     currentList = arrOfLists[0]
     currentNode = currentList.root
     while currentNode:
         print(currentNode.data)
         currentNode = currentNode.next
-n = 10
+    '''
+
+
+    if mode == 0:
+        RotateMatrix(m,n,1,arrOfLists)
+    else:
+        for i in m:
+            print(i)
+n = 5
 mode = 0
 RotateMatrix(m,n,mode)
