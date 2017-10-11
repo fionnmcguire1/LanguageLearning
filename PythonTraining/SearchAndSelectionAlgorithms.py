@@ -130,14 +130,38 @@ def DuplicateChar(s):
         s =''.join(sorted(s))
         for i in range(length-1):
             if s[i] == s[i+1]:
-                return False
-    return True
+                return True
+    return False
 
 
 string = "Hello"
 string2 = "Mcguire"
 string3 = 456789
 
-print(DuplicateChar(string))
-print(DuplicateChar(string2))
-print(DuplicateChar(string3))
+#print(DuplicateChar(string))
+#print(DuplicateChar(string2))
+#print(DuplicateChar(string3))
+
+def checkPermutation(s1,s2):
+    try:
+        s1 = str(s1)
+        s2 = str(s2)
+    except ValueError:
+        return "Data entered in method \"DucplicateChar\" was inconsistant with the data type allowed\n"+ValueError
+
+    len1 = len(s1)
+    len2 = len(s2)
+    if len1 == len2:
+        if sorted(s1) == sorted(s2):
+            return True
+    return False
+
+string = "Hello"
+string2 = "Mcguire"
+string3 = 456789
+string4 = 547896
+
+print(checkPermutation(string,string2))
+print(checkPermutation(string3,string4))
+print(checkPermutation(string,string4))
+print(checkPermutation(string3,string2))
