@@ -37,7 +37,7 @@ print(max(sample_dataset))'''
 def BinarySearch(arr,value):
     lowIndex = 1
     highIndex = len(arr)
-    while lowIndex <= highIndex and (highIndex - lowIndex) > 1:        
+    while lowIndex <= highIndex and (highIndex - lowIndex) > 1:
         middle = int(round((highIndex + lowIndex)/2))
         if arr[middle] == value:
             return middle
@@ -100,7 +100,7 @@ def mergeSort(arr1,arr2):
         while 1:
             if counter1 >= len(arr1) or counter2 >= len(arr2):
                 arr3+=(arr2[counter2:]+arr1[counter1:])
-                break                
+                break
             if arr1[counter1] < arr2[counter2]:
                 arr3.append(arr1[counter1])
                 counter1+=1
@@ -115,6 +115,29 @@ def mergeSort(arr1,arr2):
 array3 = [0,1,2,3,4]
 array4 = [3]
 print(mergeSort(array3,array4))
-        
-        
-    
+
+'''
+Find duplicate if there are characters in string
+'''
+
+def DuplicateChar(s):
+    try:
+        s = str(s)
+    except ValueError:
+        return "Data entered in method \"DucplicateChar\" was inconsistant with the data type allowed\n"+ValueError
+    length = len(s)
+    if length > 0:
+        s =''.join(sorted(s))
+        for i in range(length-1):
+            if s[i] == s[i+1]:
+                return False
+    return True
+
+
+string = "Hello"
+string2 = "Mcguire"
+string3 = 456789
+
+print(DuplicateChar(string))
+print(DuplicateChar(string2))
+print(DuplicateChar(string3))
