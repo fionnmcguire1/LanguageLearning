@@ -149,10 +149,8 @@ def checkPermutation(s1,s2):
     except ValueError:
         return "Data entered in method \"DucplicateChar\" was inconsistant with the data type allowed\n"+ValueError
 
-    len1 = len(s1)
-    len2 = len(s2)
-    if len1 == len2:
-        if sorted(s1) == sorted(s2):
+    if len(s1) == len(s2):
+        if s1 == s2 or sorted(s1) == sorted(s2):
             return True
     return False
 
