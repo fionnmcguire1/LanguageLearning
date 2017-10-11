@@ -63,23 +63,28 @@ def RotateMatrix(m,n,mode):
 
     list1 = Linkedlist()
     numOfCells = (2*dimr)+(2*dimc)-4
+    Bottom = dimr-layer
+    Right = (Bottom+(dimc-layer-2))
+    Top = (Right+(dimr-layer))
+    Left = (Top+(dimr-layer))
+
     for i in range(numOfCells):
         #BOTTOM
-        if i in range(dimr-layer):
+        if i in range(Bottom):
             val = m[layer][i]
             list1.add(val)
         #RIGHT
-        elif i in range(dimr-layer,((dimr-layer)+(dimc-layer-2))):
-            val = m[i-dimr][dimr-1]
-            list1.add(val)
-        #TOP
-        elif i in range(((dimr-layer)+(dimc-layer-2)),((dimr-layer)+(dimc-layer-2)+(dimr-layer))):
-            val = m[dimr-layer-1][(i-((dimr-layer)+(dimc-layer-2)))*-1-1]
-            list1.add(val)
-        #LEFT
-        elif i in range(((dimr-layer)+(dimc-layer-2)+(dimr-layer)),numOfCells):
-            val = m[(i-(2*(dimr-layer)+(dimc-layer-2)))*-1][layer]
-            list1.add(val)
+        elif i in range(Bottom,Right):
+                val = m[i-dimr][dimr-1]
+                list1.add(val)
+            #TOP
+        elif i in range(Right,Top):
+                val = m[dimr-layer-1][(i-Right)*-1-1]
+                list1.add(val)
+            #LEFT
+        elif i in range(Top,numOfCells):
+                val = m[(i-Top)*-1][layer]
+                list1.add(val)
     arrOfLists.append(list1)
     currentList = arrOfLists[0]
     currentNode = currentList.root
