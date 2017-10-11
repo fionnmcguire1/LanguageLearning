@@ -169,9 +169,48 @@ string = "Hello"
 string2 = "BOB"
 string3 = "Amy must I jujitsu my ma"
 string4 = "Aibohphobia"
-print("Hello There")
-print(CheckPallinPerm(string))
-print(CheckPallinPerm(string2))
-print(CheckPallinPerm(string3))
-print(CheckPallinPerm(string4))
+#print(CheckPallinPerm(string))
+#print(CheckPallinPerm(string2))
+#print(CheckPallinPerm(string3))
+#print(CheckPallinPerm(string4))
 #Expected output F,T,T,T
+
+'''
+Given two strings see if they're one character away from being equal (insert,delete,replace)
+'''
+
+def almost_there(s1,s2):
+    len1,len2 = len(s1),len(s2)
+    s1,s2 = s1.lower(),s2.lower()
+    checker = 0
+    if len1 == len2 or (len1-len2) == 1 or (len2-len1) == 1:
+        if len1 > len2:
+            n = len2
+        else:
+            n = len1
+        for i in range(n):
+            j = i
+            if checker>=1:
+                if len1 == len2:
+                    pass
+                elif len1 > len2:
+                    i+=1
+                else:
+                    j+=1
+            if s1[i] != s2[j]:
+                checker+=1
+                if checker > 1:
+                    return False
+        return True
+    else:
+        return False
+s1,s2 = "pale", "ple"
+print(almost_there(s1,s2))
+s1,s2 = "pale", "pales"
+print(almost_there(s1,s2))
+s1,s2 = "pale", "bale"
+print(almost_there(s1,s2))
+s1,s2 = "ple", "plea"
+print(almost_there(s1,s2))
+s1,s2 = "sarah", "John"
+print(almost_there(s1,s2))
