@@ -241,3 +241,10 @@ print(Compressed(s))
 s = "ffffiiooonnnnnmmcccgguuiirrre"
 print(s)
 print(Compressed(s))'''
+
+
+def isSubstringRotation(s1,s2):
+    if sorted(s1) == sorted(s1):
+        print("Is Rotation")
+    else:
+        print("Not Rotation")
