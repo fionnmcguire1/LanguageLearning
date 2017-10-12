@@ -244,7 +244,20 @@ print(Compressed(s))'''
 
 
 def isSubstringRotation(s1,s2):
-    if sorted(s1) == sorted(s1):
+    '''if sorted(s1) == sorted(s1):
         print("Is Rotation")
     else:
-        print("Not Rotation")
+        print("Not Rotation")'''
+    len1 = len(s1)
+    len2 = len(s2)
+    if len1 == len2:
+        for i in range(len1):
+            s1 = s1[-1]+s1[0:-1]
+            if s1 == s2:
+                return "Is Rotation"
+        return "Not Rotation"
+
+    else:
+        return "Not Rotation"
+s1,s2 = "waterbottle","terbottlewa"
+print(isSubstringRotation(s1,s2))
