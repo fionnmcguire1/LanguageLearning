@@ -259,5 +259,7 @@ def isSubstringRotation(s1,s2):
 
     else:
         return "Not Rotation"
+
+
 s1,s2 = "waterbottle","terbottlewa"
 print(isSubstringRotation(s1,s2))
