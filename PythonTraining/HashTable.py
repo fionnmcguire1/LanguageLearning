@@ -26,21 +26,25 @@ When a collision occurs, the value can be stored as the head of the correct link
 Note: Untilize as much info on the key as possible. This increases the size of the table and reduces the
 chance of collisions making insert, delete and lookup much faster.
 '''
-
-table = [[] for a in range(10)]
+#
+'''
 def hashingFunction(num):
     return num%10
 def insert(table,key,value):
     table[hashingFunction(key)].append(value)
+'''
+#
+def stringHashFunction(s):
+    alfa = "abcdefghijklmnopqrstuvwxyz"
+    return alfa.find(s[0].lower())
+def insertVal(table,s):
+    table[stringHashFunction(s)].append(s)
 
-insert(table,115,"Hey")
-insert(table,115,"hi")
-insert(table,7,"hello")
-insert(table,8943,"yellow")
-insert(table,33,"ahoy")
-insert(table,99,"Alright")
+table = [[] for a in range(26)]
+insertVal(table,"Hey")
+insertVal(table,"hi")
+insertVal(table,"hello")
+insertVal(table,"yellow")
+insertVal(table,"ahoy")
+insertVal(table,"Alright")
 print(table)
-
-
-
-    
