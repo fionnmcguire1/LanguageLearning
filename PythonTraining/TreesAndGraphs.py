@@ -22,16 +22,16 @@ class Node(object):
             else:
                 self.childright.insert(d)
     def contains(self,d):
-        #print("Looking at: {} for {}".format(self.data,d))
         if d == self.data:
+            #print("Looking at: {} for {}".format(self.data,d))
             return True
         else:
             if d > self.data:
                 if self.childleft:
-                    self.childleft.contains(d)
+                    return self.childleft.contains(d)
             else:
                 if self.childright:
-                    self.childright.contains(d)
+                    return self.childright.contains(d)
             return False
 
 
