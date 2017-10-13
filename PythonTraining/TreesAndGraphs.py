@@ -7,10 +7,10 @@ Description: Trees and graphs
 
 class Node(object):
     def __init__(self,d):
-        self.data = None
+        self.data = d
         self.childleft = None
         self.childright = None
-    def insert(d):
+    def insert(self,d):
         if d >= self.data:
             if self.childleft == None:
                 self.childleft = Node(d)
@@ -22,20 +22,43 @@ class Node(object):
                 self.childright = Node(d)
             else:
                 self.childright.insert(d)
+    def contains(self,d):
+        if self.data == d:
+            return True
+        else:
+            if d >= self.data:
+                if self.childleft == None:
+                    return False
+                else:
+                    self.childleft.contains(d)
+            else:
+                if self.childright == None:
+                    return False
+                else:
+                    self.childright.contains(d)
+
 
 NewNode = Node(8)
-Node.insert(9)
-Node.insert(19)
-Node.insert(59)
-Node.insert(4)
-Node.insert(6)
-Node.insert(7)
-Node.insert(14)
-Node.insert(11)
-Node.insert(62)
-Node.insert(81)
-Node.insert(55)
-Node.insert(32)
-Node.insert(18)
-Node.insert(19)
-Node.insert(10)
+NewNode.insert(9)
+NewNode.insert(19)
+NewNode.insert(59)
+NewNode.insert(4)
+NewNode.insert(6)
+NewNode.insert(7)
+NewNode.insert(14)
+NewNode.insert(11)
+NewNode.insert(62)
+NewNode.insert(81)
+NewNode.insert(55)
+NewNode.insert(32)
+NewNode.insert(18)
+NewNode.insert(19)
+NewNode.insert(10)
+
+print(NewNode.contains(14))
+print(NewNode.contains(4))
+print(NewNode.contains(19))
+print(NewNode.contains(8))
+print(NewNode.contains(18))
+print(NewNode.contains(0))
+print(NewNode.contains(1999999))
