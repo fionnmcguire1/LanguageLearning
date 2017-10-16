@@ -31,7 +31,7 @@ class Linkedlist(object):
         return self.size
     def add(self,d):
         new_node = Node(d,self.root)
-        if self.getsize() > 0: 
+        if self.getsize() > 0:
             next_node = new_node.getnext()
             next_node.setprev(new_node)
         self.root = new_node
@@ -96,20 +96,74 @@ while current_node:
 current_node = list3.root
 while current_node:
     print(current_node.getdata())
-    current_node = current_node.getnext()        
-        
-        
-        
+    current_node = current_node.getnext()
 
 
-    
-        
+#Create a doubly linked list, keep track of head and tail
+class node(object):
+    def __init__(self,d,n=None,p=None):
+        self.data = d
+        self.next = n
+        self.prev = p
 
 
+class linkedlist(object):
+    def __init__(self,r=None,t=None):
+        self.root = r
+        self.tail = t
+        self.size = 0
+    def add(self,d):
+        newnode = node(d)
+        if self.root is not None:
+            currentnode = self.root
+            currentnode.prev = newnode
+        else:
+            self.root = newnode
+        if self.size > 0:
+            newnode.next = currentnode
+        else:
+            self.tail = newnode
+        self.root = newnode
+        self.size+=1
+    def remove(self,d):
+        currentnode = self.root
+        prevnode = None
+        while currentnode:
+            if currentnode.data == d:
+                if prevnode:
+                    prevnode.next = currentnode.next
+                    nextnode = currentnode.next
+                    nextnode.prev = prevnode
+                else:
+                    self.root = currentnode.next
+                self.size -=1
+            else:
+                currentnode = currentnode.next
+        return False
 
-                
-            
-        
-                
+list2 = linkedlist()
+list2.add(8)
+list2.add(9)
+list2.add(10)
+list2.add(11)
+list2.add(12)
+list2.add(13)
+list2.add(14)
+list2.add(15)
+list2.add(16)
+list2.add(17)
+list2.add(18)
+list2.add(19)
+list2.add(20)
+list2.add(21)
+list2.add(22)
+list2.add(23)
+list2.add(24)
 
-        
+currentnode = list2.root
+while currentnode:
+    print(currentnode.data)
+    currentnode = currentnode.next
+
+tailnode = list2.tail
+print("Tail Node: {}".format(tailnode.data))
