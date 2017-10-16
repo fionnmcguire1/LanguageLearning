@@ -72,7 +72,7 @@ while current_node:
 #Printing the resulting list
 current_node = list3.root
 while current_node:
-    print(current_node.getdata())
+    #print(current_node.getdata())
     current_node = current_node.getnext()
 
 
@@ -95,7 +95,7 @@ while current_node:
 
 current_node = list3.root
 while current_node:
-    print(current_node.getdata())
+    #print(current_node.getdata())
     current_node = current_node.getnext()
 
 
@@ -117,8 +117,7 @@ class linkedlist(object):
         if self.root is not None:
             currentnode = self.root
             currentnode.prev = newnode
-        else:
-            self.root = newnode
+        self.root = newnode
         if self.size > 0:
             newnode.next = currentnode
             tailnode = self.tail
@@ -127,7 +126,7 @@ class linkedlist(object):
             rootnode.prev = self.tail
         else:
             self.tail = newnode
-        self.root = newnode
+
         self.size+=1
     def remove(self,d):
         currentnode = self.root
@@ -144,25 +143,24 @@ class linkedlist(object):
             else:
                 currentnode = currentnode.next
         return False
+    def rotate(self,n):
+        for i in range(n):
+            rootnode = self.root
+            tailnode = self.tail
+            #print("{} Root Node: {}".format(i,rootnode.data))
+            #print("{} Tail Node: {}".format(i, tailnode.data))
+            self.root = rootnode.next
+            self.tail = tailnode.next
+
+
+
+
+
 
 list2 = linkedlist()
-list2.add(8)
-list2.add(9)
-list2.add(10)
-list2.add(11)
-list2.add(12)
-list2.add(13)
-list2.add(14)
-list2.add(15)
-list2.add(16)
-list2.add(17)
-list2.add(18)
-list2.add(19)
-list2.add(20)
-list2.add(21)
-list2.add(22)
-list2.add(23)
-list2.add(24)
+for i in range(20):
+    list2.add(i)
+list2.rotate(5)
 
 currentnode = list2.root
 print("Root Node: {}".format(currentnode.data))
