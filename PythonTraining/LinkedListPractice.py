@@ -121,6 +121,10 @@ class linkedlist(object):
             self.root = newnode
         if self.size > 0:
             newnode.next = currentnode
+            tailnode = self.tail
+            tailnode.next = self.root
+            rootnode = self.root
+            rootnode.prev = self.tail
         else:
             self.tail = newnode
         self.root = newnode
@@ -161,7 +165,9 @@ list2.add(23)
 list2.add(24)
 
 currentnode = list2.root
-while currentnode:
+print("Root Node: {}".format(currentnode.data))
+
+while currentnode != list2.tail:
     print(currentnode.data)
     currentnode = currentnode.next
 
