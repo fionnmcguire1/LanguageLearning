@@ -16,11 +16,16 @@ def timeInWords(h,m):
     if m == -1:
         message = hours[h]+" o' clock"
     elif m == 29:
-        message = minutes[m]+" "+minstr+" past "+hours[h]
+        message = minutes[m]+" past "+hours[h]
+    elif m == 14 or m == 44:
+        if m == 14:
+            message = "quarter past "+hours[h]
+        else:
+            message = "quarter to "+hours[h+1]
     elif m > 29:
         message = minutes[58-m]+" "+minstr+" to "+hours[h+1]
     else:
         message = minutes[m]+" "+minstr+" past "+hours[h]
     print(message)
 
-timeInWords(7,29)
+timeInWords(5,30)
