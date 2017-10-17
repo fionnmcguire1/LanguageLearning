@@ -152,11 +152,6 @@ class linkedlist(object):
             self.root = rootnode.next
             self.tail = tailnode.next
 
-
-
-
-
-
 list2 = linkedlist()
 for i in range(20):
     list2.add(i)
@@ -171,3 +166,18 @@ while currentnode != list2.tail:
 
 tailnode = list2.tail
 print("Tail Node: {}".format(tailnode.data))
+
+
+'''Hackerank Medium Question, check if linked list data structure is cyclic'''
+def has_cycle(head):
+    aryOfPointers = []
+    while head:
+        if head.next:
+            if head.next in aryOfPointers:
+                return True
+            else:
+                aryOfPointers.append(head)
+                head = head.next
+        else:
+            return False
+    return False
