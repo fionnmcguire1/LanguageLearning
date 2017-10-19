@@ -115,3 +115,29 @@ def mergeSort(arr1,arr2):
 array3 = [0,1,2,3,4]
 array4 = [3]
 print(mergeSort(array3,array4))
+
+
+'''Greedy algorithm'''
+
+possibleNum = [1,2,5,10,20,50,100,200,500,1000,2000,5000,10000]
+inputNum = 5002351
+
+def GreedyAlgorithm(possibleNum,inputNum):
+    i = 1
+    message = ""
+    while inputNum > 0 and i < len(possibleNum):
+        if possibleNum[-i] <= inputNum:
+            findRemainder = inputNum/possibleNum[-i]
+            num = inputNum//possibleNum[-i]
+            remainder = (findRemainder-num)*possibleNum[-i]
+            inputNum = remainder
+            if i < 6:
+                message+=str(int(num))+" "+str(int(possibleNum[-i]/100))+" Euro Notes,"
+            elif i < 8:
+                message+=str(int(num))+" "+str(int(possibleNum[-i]/100))+" Euro Coins,"
+            else:
+                message += str(int(num))+" "+str(int(possibleNum[-i]/100))+" Cent Coins,"
+        i+=1
+    return message
+
+print(GreedyAlgorithm(possibleNum,inputNum))
