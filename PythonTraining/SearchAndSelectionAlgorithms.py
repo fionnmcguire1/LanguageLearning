@@ -71,10 +71,12 @@ def quicksort(array, begin=0, end=None):
         _quicksort(array, begin, pivot-1)
         _quicksort(array, pivot+1, end)
     return _quicksort(array, begin, end)
-'''
+
+sample_dataset = [1000,1,2,50,100,200,500,2000,5,10,20,5000,10000,57,58]
+
 print(sample_dataset)
 quicksort(sample_dataset)
-print(sample_dataset)'''
+print(sample_dataset)
 
 #Second sorted list
 arr = [63,65,78,91,92,93,95,97]
@@ -140,4 +142,36 @@ def GreedyAlgorithm(possibleNum,inputNum):
         i+=1
     return message
 
-print(GreedyAlgorithm(possibleNum,inputNum))
+#print(GreedyAlgorithm(possibleNum,inputNum))
+
+
+'''Quicksort Algorithm v2'''
+unorderedList = [1000,1,2,50,100,200,500,2000,5,10,20,5000,10000,57,58]
+unorderedList2 = [1001,4,7,51,101,201,501,2001,50000,11,21,5001,10001,59,60]
+
+unorderedList = sorted(unorderedList)
+unorderedList2 = sorted(unorderedList2)
+
+if len(unorderedList) > len(unorderedList2):
+    length = len(unorderedList2)
+else:
+    length = len(unorderedList)
+
+counter1,counter2 = 0,0
+newList = []
+checker = True
+while checker != False:
+        if unorderedList[counter1] > unorderedList2[counter2]:
+            newList.append(unorderedList2[counter2])
+            counter2+=1
+        else:
+            newList.append(unorderedList[counter1])
+            counter1+=1
+        if counter1 >= len(unorderedList):
+            newList+=unorderedList2[counter2:]
+            checker = False
+        elif counter2 >= len(unorderedList2):
+            newList+=unorderedList[counter1:]
+            checker = False
+
+print(newList)

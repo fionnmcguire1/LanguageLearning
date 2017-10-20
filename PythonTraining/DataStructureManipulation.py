@@ -133,3 +133,27 @@ def RotateMatrix(m,n,mode,arrOfLists = None):
 n = 5
 mode = 0
 RotateMatrix(m,n,mode)
+
+
+
+
+class person(object):
+    def __init__(self, name, age, city):
+        self.name = name
+        self.age = age
+        self.city = city
+
+    def printDetails(self):
+        print("{} {} {}".format(self.name, str(self.age),self.city))
+
+class employee(person):
+    def __init__(self,name, age, city):
+        person.__init__(self,name, age, city)
+    def moving(person,newCity):
+        person.city = newCity
+        print("{} {} {}".format(person.name, str(person.age),person.city))
+
+
+newPerson1 = employee("Fionn Mcguire", 23, "Dublin")
+newPerson1.printDetails()
+newPerson1.moving("London")
