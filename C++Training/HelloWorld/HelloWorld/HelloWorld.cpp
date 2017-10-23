@@ -9,7 +9,11 @@
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
     std::cout << "Hello, World!\n";
+    int age;
+    char name[6];
+    std::cin >> name;
+    std::cin >> age;
+    std::cout << "\t Hello, " << name << " you are " << age << " years old!\n";
     return 0;
 }
