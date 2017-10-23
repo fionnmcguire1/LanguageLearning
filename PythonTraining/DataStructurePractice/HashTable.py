@@ -47,4 +47,12 @@ insertVal(table,"hello")
 insertVal(table,"yellow")
 insertVal(table,"ahoy")
 insertVal(table,"Alright")
-print(table)
+#print(table)
+
+
+alfa = "abcdefghijklmnopqrstuvwxyz"
+
+list1 = ["" for a in range(26)]
+for i in alfa:
+    list1[ord(i)%26] = i
+print(list1)
