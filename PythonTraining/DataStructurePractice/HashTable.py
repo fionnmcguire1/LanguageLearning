@@ -56,3 +56,27 @@ list1 = ["" for a in range(26)]
 for i in alfa:
     list1[ord(i)%26] = i
 print(list1)
+
+
+'''
+longest substring
+'''
+def LongestSubstring(string1):
+    list1 = ['' for i in range(26)]
+
+    def hashFunction(letter):
+        return ord(letter)%26
+    j = 1
+    counter = 0
+    for i in string1:
+        index = hashFunction(i)
+        if list1[index] != '':
+            if counter < j:
+                counter = j
+            j = 1
+        list1[index] = j
+        j+=1
+    if j == len(string1):
+        return len(string1)
+    else:
+        return counter
