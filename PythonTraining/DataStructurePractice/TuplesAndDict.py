@@ -17,27 +17,38 @@ print(tup4)
 
 
 #Dictionaries
-mydict = {"Fionn": 23, "Richie": 24, "Sarah": 24, "Sarabeth": 28, "Katie": 33}
+mydict = {"Fionn": 23, "Richie": 25, "Sarah": 24, "Sarabeth": 28, "Katie": 33}
 
 print(mydict)
 #print element
-print(mydict["Fionn"])
+#print(mydict["Fionn"])
 sortedKeys = sorted(mydict.keys())
 sortedValues = sorted(mydict.values())
-del mydict["Richie"]
+#del mydict["Richie"]
 #Delete from dictionary
-print(mydict)
+#print(mydict)
 
 #Check if key in dictionary
-if "James" in mydict:
-    print(True)
+'''if "James" in mydict:
+    #print(True)
 elif "James" not in mydict:
-    print(False)
+    #print(False)
+'''
 #iterate through dictionary
-for i,j in mydict.items():
-    print("{} with value {}".format(i,j))
-
+'''for i,j in mydict.items():
+    #print("{} with value {}".format(i,j))
+'''
 #Another way to iterate through mydict
-for i in mydict:
+'''for i in mydict:
     print(i)
     print(mydict[i])
+'''
+#Sorted dict
+secondDict = {}
+for i,j in mydict.items():
+    secondDict[j] = i
+
+sortedValues = sorted(secondDict.keys())
+sortedValues = sortedValues[::-1]
+for i in sortedValues:
+    print(secondDict[i])
