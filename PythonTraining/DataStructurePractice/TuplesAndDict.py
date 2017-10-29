@@ -17,7 +17,7 @@ print(tup4)
 
 
 #Dictionaries
-mydict = {"Fionn": 23, "Richie": 25, "Sarah": 24, "Sarabeth": 28, "Katie": 33}
+mydict = {"Fionn": 23, "Richie": 24, "Sarah": 24, "Sarabeth": 28, "Katie": 33}
 
 print(mydict)
 #print element
@@ -43,12 +43,23 @@ elif "James" not in mydict:
     print(i)
     print(mydict[i])
 '''
-#Sorted dict
-secondDict = {}
-for i,j in mydict.items():
-    secondDict[j] = i
+#Sorted dict: sorts by values and alphabetically in the event of duplicates
+def sortDict(mydict):
+    secondDict = {}
+    for i,j in mydict.items():
+        if j not in secondDict:
+            secondDict[j] = list()
+        secondDict[j].append(i)
 
-sortedValues = sorted(secondDict.keys())
-sortedValues = sortedValues[::-1]
-for i in sortedValues:
-    print(secondDict[i])
+    sortedValues = sorted(secondDict.keys())
+    sortedValues = sortedValues[::-1]
+    ReturnValue = []
+    for i in sortedValues:
+        if len(secondDict[i]) != 1:
+            secondDict[i] = sorted(secondDict[i])
+        for j in secondDict[i]:
+            ReturnValue.append(j)
+    return ReturnValue
+
+
+print(sortDict(mydict))
