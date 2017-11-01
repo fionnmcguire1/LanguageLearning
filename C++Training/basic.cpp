@@ -20,6 +20,24 @@ int main()
 	cout << "Size of char " << sizeof(myGrade) << " Bytes\n";
 	cout << "Size of const double " << sizeof(PI) << " Bytes\n";
 
-return 0;
+	int largestInt = 2147483647;
+	cout << "Largest int: " << largestInt << " \n";
+	largestInt+=1;
+	cout << "Largest Int: " << largestInt << " \n";
+	
+	
+	int five = 5;
+
+	//Demonstrating arithmetic operations
+	cout << "5+5=" << five+five << "\n";	
+	cout << "5-5=" << five-five << "\n";
+	cout << "50/5=" << 50/five << "\n";
+	cout << "5*5=" << five*five << "\n";
+	cout << "51%5=" << 51%5 << "\n";
+	cout << "5++=" << five++ << "\n";
+	cout << "++5=" << ++five << "\n";
+	cout << "5--=" << five-- << "\n";
+	cout << "--5=" << --five << "\n";
+	return 0;
 }
 
