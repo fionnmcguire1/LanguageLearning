@@ -32,6 +32,12 @@ int main()
 	}
 
 	
+	int randomNum = (rand() % 100) +1;
+	while(randomNum != 100)
+	{
+		cout << randomNum << "\n";
+		randomNum = (rand() %100) +1;
+	}
 
 
 
