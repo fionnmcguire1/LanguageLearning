@@ -38,6 +38,16 @@ int main()
 	cout << "++5=" << ++five << "\n";
 	cout << "5--=" << five-- << "\n";
 	cout << "--5=" << --five << "\n";
+
+	cout << "4/5=" << (double) 4/5 << "\n";
+
+
+
+
+
+
+
+
 	return 0;
 }
 
