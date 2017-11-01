@@ -7,13 +7,13 @@
 //
 
 #include <iostream>
-
+using namespace std;
 int main(int argc, const char * argv[]) {
-    std::cout << "Hello, World!\n";
+    cout << "Hello, World!\n";
     int age;
     char name[6];
-    std::cin >> name;
-    std::cin >> age;
-    std::cout << "\t Hello, " << name << " you are " << age << " years old!\n";
+    cin >> name;
+    cin >> age;
+    cout << "\t Hello, " << name << " you are " << age << " years old!" << endl;
     return 0;
 }

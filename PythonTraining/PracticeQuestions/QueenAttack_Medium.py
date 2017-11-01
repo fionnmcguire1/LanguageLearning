@@ -60,6 +60,8 @@ while True:
                 i = rQueen
                 Direction+=1  
     elif Direction == 2:
+        
+
         j+=1
         if j > -1 and j < n:
             if chessBoard[rQueen][j] == 0:
@@ -209,13 +211,4 @@ for a in range(k):
 moves = 0
 #print(movingDirections)
 for i in movingDirections:
-    moves+=i
-print(moves)
-'''        
-
-            
-            
-    
-    
-
-
+    moves+='''
