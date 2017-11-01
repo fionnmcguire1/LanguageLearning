@@ -33,14 +33,20 @@ int main()
 
 	
 	int randomNum = (rand() % 100) +1;
-	while(randomNum != 100)
+	do 
 	{
 		cout << randomNum << "\n";
 		randomNum = (rand() %100) +1;
-	}
+	} while(randomNum != 100);
+	int IntnumGuessed = 0;
+	int numGuessed;
+	do{
+		cout << "Guess a number between 1 and 10\n";
+		cin >> numGuessed;
+		IntnumGuessed = stoi(numGuessed);
+	}while(IntnumGuessed != 4);
 
-
-
+	cout << "You win\n";
 
 	return 0;
 }
