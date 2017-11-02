@@ -8,6 +8,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+//#include <cstdlib>
 
 using namespace std;
 
@@ -31,19 +32,19 @@ int main()
 		cout << "\n";
 	}
 
-	
+	/*
 	int randomNum = (rand() % 100) +1;
 	do 
 	{
 		cout << randomNum << "\n";
 		randomNum = (rand() %100) +1;
-	} while(randomNum != 100);
+	} while(randomNum != 100);*/
 	int IntnumGuessed = 0;
 	int numGuessed;
 	do{
 		cout << "Guess a number between 1 and 10\n";
 		cin >> numGuessed;
-		IntnumGuessed = stoi(numGuessed);
+		IntnumGuessed = numGuessed;
 	}while(IntnumGuessed != 4);
 
 	cout << "You win\n";
