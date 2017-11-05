@@ -16,6 +16,20 @@ def addToHeap(heap,data):
         else:
             break
     return heap
+
+
+def addToMinHeap(heap,data):
+    heap.append(data)
+    i = len(heap)-1
+    while i > 0:
+        if heap[i] < heap[i-1]:
+            heap[i],heap[i-1] = heap[i-1],heap[i]
+            i-=1
+        else:
+            break
+    return heap
+
+
 for i in range(20):
     heap = addToHeap(heap,i)
     
