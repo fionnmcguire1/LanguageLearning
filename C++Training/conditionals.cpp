@@ -52,6 +52,9 @@ int main()
 
 	}
 
+	int checker = 5;
+	if(checker == 5) cout << "One line conditional!\n";
+
 
 
 	return 0;
