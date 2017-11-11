@@ -13,10 +13,12 @@ int main(){
 	double a = 7.2;
 	double b{7.2};
 	double c = {7.2};
+	auto d = 5;
 
 	cout << "A: " << a << "\n";
 	cout << "B: " << b << "\n";
 	cout << "C: " << c << "\n";
+	cout << "D: " << d << "\n";
 
 
 	return 0;
