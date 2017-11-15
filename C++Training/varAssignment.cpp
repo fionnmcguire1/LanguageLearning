@@ -14,12 +14,16 @@ int main(){
 	double b{7.2};
 	double c = {7.2};
 	auto d = 5;
+	
+	int v[3] = {1,2,3};
+	int* e = &v[1];
 
 	cout << "A: " << a << "\n";
 	cout << "B: " << b << "\n";
 	cout << "C: " << c << "\n";
 	cout << "D: " << d << "\n";
-
+	cout << "E: " << e << "\n";	
+	cout << "Contents of E: " << *e << "\n";
 
 	return 0;
 }
