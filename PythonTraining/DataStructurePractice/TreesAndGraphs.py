@@ -4,7 +4,7 @@ Date: 13-10-2017
 Description: Trees and graphs
 '''
 
-
+#Tree node
 class Node(object):
     def __init__(self,d):
         self.data = d

@@ -49,5 +49,12 @@ int main()
 
 	cout << "You win\n";
 
+	int array1[10] = {1,2,3,4,5,6,7,8,9,10};
+	for(auto i : array1)
+	{
+		cout << i << "\n";
+	}
+
+
 	return 0;
 }
