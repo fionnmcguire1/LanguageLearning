@@ -27,25 +27,19 @@ def hash_function(ListOfOrganisedChars, dictOfIndexes,char,index):
         dictOfIndexes[char] = len(ListOfOrganisedChars)
         ListOfOrganisedChars.append([index])
     return dictOfIndexes,ListOfOrganisedChars
-for i in xrange(40):
-    if i < 5:
-        dictOfIndexes,ListOfOrganisedChars = hash_function(ListOfOrganisedChars, dictOfIndexes,'a',i) 
-    elif i > 5 and i < 15: 
-        dictOfIndexes,ListOfOrganisedChars = hash_function(ListOfOrganisedChars, dictOfIndexes,'b',i)
-    elif i > 15 and i < 25:
-        dictOfIndexes,ListOfOrganisedChars = hash_function(ListOfOrganisedChars, dictOfIndexes,'c',i)
-    else:
-        dictOfIndexes,ListOfOrganisedChars = hash_function(ListOfOrganisedChars, dictOfIndexes,'d',i)
-print(ListOfOrganisedChars)
+for index,value in enumerate(InputString):
+    dictOfIndexes,ListOfOrganisedChars = hash_function(ListOfOrganisedChars, dictOfIndexes,value,index)
 
+totalPsubs = len(InputString)
+Length = len(ListOfOrganisedChars)
+for i in xrange(Length):
+    if len(ListOfOrganisedChars[i]) > 1:
+        for j in xrange(len(ListOfOrganisedChars[i])-1):
+            str1 = InputString[ListOfOrganisedChars[i][j]:(ListOfOrganisedChars[i][j+1]+1)]
+            if str1 == str1[::-1]:
+                totalPsubs+=1
 
+print "Total Palindromic Substrings: ",; print totalPsubs
 
-
-
-
-
-
-
-
-
+#print(ListOfOrganisedChars)
 
