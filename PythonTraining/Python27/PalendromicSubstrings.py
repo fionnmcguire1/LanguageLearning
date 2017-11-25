@@ -35,9 +35,12 @@ Length = len(ListOfOrganisedChars)
 for i in xrange(Length):
     if len(ListOfOrganisedChars[i]) > 1:
         for j in xrange(len(ListOfOrganisedChars[i])-1):
-            str1 = InputString[ListOfOrganisedChars[i][j]:(ListOfOrganisedChars[i][j+1]+1)]
-            if str1 == str1[::-1]:
-                totalPsubs+=1
+                k = 1
+                while k+j < len(ListOfOrganisedChars[i]):
+                    str1 = InputString[ListOfOrganisedChars[i][j]:(ListOfOrganisedChars[i][j+k]+1)]
+                    if str1 == str1[::-1]:
+                        totalPsubs+=1
+                    k+=1
 
 print "Total Palindromic Substrings: ",; print totalPsubs
 
