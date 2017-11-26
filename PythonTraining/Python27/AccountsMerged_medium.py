@@ -34,6 +34,6 @@ class Solution(object):
         if checker == False:
             newAccounts.append(account)
             for index,account in enumerate(newAccounts):
-                newAccounts[index] = [account[0]]+sorted(account[1:])
+                newAccounts[index] = [account[0]]+sorted(list(set(account[1:]))])
         return newAccounts
                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
