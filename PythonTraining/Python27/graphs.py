@@ -25,12 +25,13 @@ class Graph():
         
         def hasPath(checked,children,d):
             for child in children:
-                if child.data == d:
-                    return True
-                checked.append(child)
-                answer = hasPath(checked,child.children,d)
-                if answer == True:
-                    return True
+                if child not in checked:
+                    if child.data == d:
+                        return True
+                    checked.append(child)
+                    answer = hasPath(checked,child.children,d)
+                    if answer == True:
+                        return True
 
         checked = []
         checked.append(rootNode)
@@ -48,5 +49,6 @@ child = newNode.children[1]
 child.addChild(Node(5))
 child.addChild(Node(6))
 child.addChild(Node(7))
+child.addChild(newGraph.head)
 
 print newGraph.DepthFirstSearch(7)
