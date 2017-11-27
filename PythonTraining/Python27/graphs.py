@@ -39,6 +39,26 @@ class Graph():
         if hasPath(checked,rootNode.children,d) == True:
             return True
         return False
+
+    def BreathFirstSearch(self,d):
+        rootNode = self.head
+        if rootNode.data == d:
+            return True
+        checkingNodes = []
+        checkingNodes+=rootNode.children
+        checked = []
+        def checkLayer(checked,checkingNodes,d):
+            newCheckingNodes = []
+            for child in checkingNodes:
+                if child not in checked:
+                    checked.append(child)
+                    if child.data == d:
+                        return True
+                    newCheckingNodes += child.children
+            answer = checkLayer(checked,newCheckingNodes,d)
+            if answer == True:
+                return True
+            return False
 newGraph = Graph()
 newNode = Node(1)
 newGraph.head = newNode
@@ -51,4 +71,4 @@ child.addChild(Node(6))
 child.addChild(Node(7))
 child.addChild(newGraph.head)
 
-print newGraph.DepthFirstSearch(7)
+print newGraph.BreathFirstSearch(4)
