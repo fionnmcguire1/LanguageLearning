@@ -7,14 +7,14 @@ Description: Practicing Heaps
 #Implementation of heap using array
 heap = []
 def addToHeap(heap,data):
+    length = len(heap)
+    i = 0
+    while i < length:
+        if heap[i] <= data:
+            heap.insert(i,data)
+            return heap
+        i+=1
     heap.append(data)
-    i = len(heap)-1
-    while i > 0:
-        if heap[i] > heap[i-1]:
-            heap[i],heap[i-1] = heap[i-1],heap[i]
-            i-=1
-        else:
-            break
     return heap
 
 
@@ -49,25 +49,4 @@ heap = addToHeap(heap,1)
 heap = addToHeap(heap,0)
 heap = addToHeap(heap,18)
 
-
 print(heap)
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
