@@ -23,11 +23,11 @@ def bestTime2D(prices):
         for indexbuy2, i in enumerate(index):
             #print(indexbuy2)
             for indexsell, jindex in enumerate(prices):
-                
+
                 for indexsell2, j in enumerate(jindex):
-                    
+
                     if i !='\n' and j !='\n':
-                        
+
                         result = float(j) - float(i)
                         if result > (sell[indexsell2]-buy[indexbuy2]):
                             buy[indexbuy2],sell[indexsell2] = float(i),float(j)
@@ -46,7 +46,7 @@ def bestTime2D(prices):
 #Creating the array of numbers
 
 import random
-f = open('tradefiles.txt', 'w')
+f = open('../Data/tradefiles.txt', 'w')
 i = 0
 while i < 1000:
     if i ==0:
@@ -119,13 +119,13 @@ class buyer():
         self.balence+=amount
 
 class broker():
-    def __init__(self,client1,client2,amount,stock_price,buying):       
+    def __init__(self,client1,client2,amount,stock_price,buying):
         self.client1 = client1 #buyer
         self.client2 = client2 #seller
         self.amount = amount
         self.price = stock_price
         self.buying = buying
-        
+
     def conduct_exchange(self):
         cost = self.price*self.amount
         if self.buying == True:
@@ -138,12 +138,12 @@ class broker():
                     if self.client2.name in self.client1.owned_stocks.keys():
                         self.client1.owned_stocks[self.client2.name] += self.amount
                     else:
-                        self.client1.owned_stocks[self.client2.name] = self.amount                       
+                        self.client1.owned_stocks[self.client2.name] = self.amount
         else:
             if self.client1.owned_stocks[self.client2.name] >= self.amount:
                 self.client1.sell_stock()
                 self.client2.return_stock(self.amount)
-    
+
 
 google = seller("GGL")
 apple = seller("APP")
@@ -197,5 +197,3 @@ print("{0} new balence is €{1}".format(fionn.name,fionn.balence))
 print("{0} new balence is €{1}".format(richard.name,richard.balence))
 print("{0} new balence is €{1}".format(brian.name,brian.balence))
 print("Execution time is {0} milliseconds".format((end_time-start_time)*1000))
-
-
