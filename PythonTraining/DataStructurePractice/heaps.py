@@ -73,9 +73,9 @@ mySortedList = [1,3,4,5,7,8,10]
 heap_list = []
 
 
-#Method to insert
-#Method to remove
-#Method to bubble up or down
+#Default behavior is to start at the bottom of the
+#list and perform swaps on parents. If the index is provided it must
+#swaps up.If the index is provided, it will swap down 
 def BubbleUpOrDown(heap_list,provided_index=None):
     if provided_index == None:
         index = len(heap_list)-1
@@ -84,7 +84,6 @@ def BubbleUpOrDown(heap_list,provided_index=None):
         #if index == 0: break
         #Calculating surrounding indexs
         parent_index = int(((index-1)/2))
-
         left_child = int((index*2)+1)
         right_child = int((index*2)+2)
 
@@ -92,12 +91,10 @@ def BubbleUpOrDown(heap_list,provided_index=None):
         if parent_index < 0: parent_index = 0
 
         #Setting left and right to none if their index has not been set yet
-        #This may prove redundant as we may have a rule that the bubble only happens once
+        #As we don't want to access elements from reverse
         if left_child > len(heap_list)-1: left_child,right_child=None,None
         elif right_child > len(heap_list)-1: right_child=None
 
-        # print(heap_list[left_child])
-        # print(heap_list[right_child])
         if left_child is not None and heap_list[index] > heap_list[left_child]:
             tmp_left = heap_list[left_child]
             heap_list[left_child] = heap_list[index]
