@@ -81,7 +81,8 @@ def bubbleUpOrDown(heap_list,value):
     while True:
         if index == 0: break
         #Calculating surrounding indexs
-        parent_index = int(round(((index-2)/2)))
+        parent_index = int(((index-1)/2))
+
         left_child = int((index*2)+1)
         right_child = int((index*2)+2)
 
@@ -93,29 +94,30 @@ def bubbleUpOrDown(heap_list,value):
         if left_child > len(heap_list)-1: left_child,right_child=None,None
         elif right_child > len(heap_list)-1: right_child=None
 
-        if left_child is not None and heap_list[index] > heap_list[left_child]:
-            tmp_left = heap_list[left_child]
-            heap_list[left_child] = heap_list[index]
-            heap_list[index] = tmp_left
-            index = left_child
-        elif right_child is not None and heap_list[index] > heap_list[right_child]:
-            tmp_right = heap_list[right_child]
-            heap_list[right_child] = heap_list[index]
-            heap_list[index] = tmp_right
-            index = left_child
-        elif heap_list[index] < heap_list[parent_index]:
+        # if left_child is not None and heap_list[index] > heap_list[left_child]:
+        #     tmp_left = heap_list[left_child]
+        #     heap_list[left_child] = heap_list[index]
+        #     heap_list[index] = tmp_left
+        #     index = left_child
+        # elif right_child is not None and heap_list[index] > heap_list[right_child]:
+        #     tmp_right = heap_list[right_child]
+        #     heap_list[right_child] = heap_list[index]
+        #     heap_list[index] = tmp_right
+        #     index = left_child
+        if heap_list[index] < heap_list[parent_index]:
             tmp_parent = heap_list[parent_index]
             heap_list[parent_index] = heap_list[index]
             heap_list[index] = tmp_parent
             index = parent_index
-        else:
-            break
+        else: break
     return heap_list
 
 
 
 def insertToHeap(heap_list,value):
     heap_list.append(value)
+    print("Before")
+    print(heap_list)
     heap_list = bubbleUpOrDown(heap_list,value)
     print(heap_list)
 
