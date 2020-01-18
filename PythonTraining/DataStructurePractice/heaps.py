@@ -60,16 +60,73 @@ def potentialBubbleSort(mySortedList,insertable_number):
 
 
 mySortedList = [1,3,4,5,7,8,10]
-print(mySortedList)
-
-potentialBubbleSort(mySortedList,0)
-potentialBubbleSort(mySortedList,2)
-potentialBubbleSort(mySortedList,6)
-potentialBubbleSort(mySortedList,9)
-potentialBubbleSort(mySortedList,11)
-
-
-
+# print(mySortedList)
+#
+# potentialBubbleSort(mySortedList,0)
+# potentialBubbleSort(mySortedList,2)
+# potentialBubbleSort(mySortedList,6)
+# potentialBubbleSort(mySortedList,9)
+# potentialBubbleSort(mySortedList,11)
 
 
 #Implementation of a heap
+heap_list = []
+
+
+#Method to insert
+#Method to remove
+#Method to bubble up or down
+def bubbleUpOrDown(heap_list,value):
+    index = len(heap_list)-1
+    while True:
+        if index == 0: break
+        #Calculating surrounding indexs
+        parent_index = int(round(((index-2)/2)))
+        left_child = int((index*2)+1)
+        right_child = int((index*2)+2)
+
+        #If it's the root, this calc will return a negative
+        if parent_index < 0: parent_index = 0
+
+        #Setting left and right to none if their index has not been set yet
+        #This may prove redundant as we may have a rule that the bubble only happens once
+        if left_child > len(heap_list)-1: left_child,right_child=None,None
+        elif right_child > len(heap_list)-1: right_child=None
+
+        if left_child is not None and heap_list[index] > heap_list[left_child]:
+            tmp_left = heap_list[left_child]
+            heap_list[left_child] = heap_list[index]
+            heap_list[index] = tmp_left
+            index = left_child
+        elif right_child is not None and heap_list[index] > heap_list[right_child]:
+            tmp_right = heap_list[right_child]
+            heap_list[right_child] = heap_list[index]
+            heap_list[index] = tmp_right
+            index = left_child
+        elif heap_list[index] < heap_list[parent_index]:
+            tmp_parent = heap_list[parent_index]
+            heap_list[parent_index] = heap_list[index]
+            heap_list[index] = tmp_parent
+            index = parent_index
+        else:
+            break
+    return heap_list
+
+
+
+def insertToHeap(heap_list,value):
+    heap_list.append(value)
+    heap_list = bubbleUpOrDown(heap_list,value)
+    print(heap_list)
+
+
+insertToHeap(heap_list,8)
+insertToHeap(heap_list,9)
+insertToHeap(heap_list,7)
+insertToHeap(heap_list,10)
+insertToHeap(heap_list,5)
+insertToHeap(heap_list,20)
+insertToHeap(heap_list,4)
+insertToHeap(heap_list,2)
+insertToHeap(heap_list,13)
+insertToHeap(heap_list,32)
