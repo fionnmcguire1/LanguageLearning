@@ -5,7 +5,15 @@ Date January 2020
 Notes on Heaps:
 2 forms -min and max heaps
 In a min heap the elements are all smaller than their children
+Instant O(1) access to the largest OR smallest value
+Useful for priority queues eg:
+     In a doctors office, first person comes in with a fever, priority is 5
+     next comes in with cough, priority is 3, next comes in with broken leg,
+     priority is 25. The root would be 5, left node 3, right node 25. Then heapify up
+     so that the 25 is the root node and the doctor sees that patient first.
 
+AKA: Binary heap
+     Often referenced as a 1 index array
 ---------- 2 --------------
 ------- 4 --- 8 -----------
 -----9---7---10---9--------
@@ -27,6 +35,10 @@ This makes it very compact as I presume it doesn't have to deal with
 a load of class meta data. Seperately a list is much easier to
 traverse through should you know what you're looking for. For example
 to find the largest value you can just get the last element.
+
+
+TODO: Build heap from existing unsorted list
+Look into connecting max heaps together
 
 '''
 
@@ -75,8 +87,8 @@ heap_list = []
 
 #Default behavior is to start at the bottom of the
 #list and perform swaps on parents. If the index is provided it must
-#swaps up.If the index is provided, it will swap down 
-def BubbleUpOrDown(heap_list,provided_index=None):
+#swaps up.If the index is provided, it will swap down
+def HeapSort(heap_list,provided_index=None):
     if provided_index == None:
         index = len(heap_list)-1
     else: index = provided_index
@@ -115,14 +127,14 @@ def BubbleUpOrDown(heap_list,provided_index=None):
 
 def insertToHeap(heap_list,value):
     heap_list.append(value)
-    heap_list = BubbleUpOrDown(heap_list)
+    heap_list = HeapSort(heap_list)
     print(heap_list)
 
 def removeFromHeap(heap_list):
     if len(heap_list) > 1:
         heap_list[0] = heap_list[-1]
         heap_list.pop()
-        BubbleUpOrDown(heap_list,0)
+        HeapSort(heap_list,0)
     else: print("Heap empty!")
     print(heap_list)
 
