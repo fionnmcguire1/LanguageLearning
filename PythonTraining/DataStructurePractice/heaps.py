@@ -37,7 +37,9 @@ traverse through should you know what you're looking for. For example
 to find the largest value you can just get the last element.
 
 
-TODO: Build heap from existing unsorted list
+TODO:
+    Build heap from existing unsorted list
+    - You just traverse through the list and heapify each item
 Look into connecting max heaps together
 
 '''
