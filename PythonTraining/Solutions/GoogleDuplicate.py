@@ -28,4 +28,5 @@ def findLongestCommonString(first_list,second_list):
                 largest_sub_string = comparable_str
     return largest_sub_string
 
+#(N2 log n + logn)
 print("Find Longest Common String: ",findLongestCommonString("GEEKSFORGEEKS","GEEKSQUIZ"))

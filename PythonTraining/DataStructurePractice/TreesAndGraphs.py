@@ -62,9 +62,6 @@ print(NewNode.contains(1999999))
 
 #TTTTTFF
 
-
-
-
 class Trie(object):
     def __init__(self,d=None):
         self.data = None
@@ -73,4 +70,3 @@ class Trie(object):
         for d in dataset:
             newNode = Trie(d)
             self.childNodes.append(newNode)
-
