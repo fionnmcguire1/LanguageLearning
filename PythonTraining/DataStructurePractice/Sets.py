@@ -19,3 +19,14 @@ print(demo_minus)
 print(demo_minus2)
 print(demo_plus)
 print(demo_both)
+
+
+set1 = set([1,2,3,4,5,6,7,8,9])
+set2 = set([6,7,8,9,10,11,12,13,14,15])
+set3 = set([8,9,15,16,17,18,19,1,2])
+
+print(set1.intersection(set2))
+print(set1.intersection(set2,set3))
+print(set1.intersection(set2,set3))
+print(set1.difference(set2,set3))
+print(set1.symmetric_difference(set2))

@@ -70,3 +70,31 @@ class Trie(object):
         for d in dataset:
             newNode = Trie(d)
             self.childNodes.append(newNode)
+
+
+
+
+new_tree = dict()
+new_tree['A'] = ['B','C']
+new_tree['B'] =['D','E']
+new_tree['D'] = ['F','E']
+new_tree['F'] = ['D','E']
+new_tree['E'] = ['D','B','C']
+new_tree['C'] = ['A','E']
+
+def traverse_tree(new_tree,visited=[]):
+    if visited == []:
+        current_node = list(new_tree.keys())[0]
+        print(current_node)
+        traverse_tree(new_tree,[current_node])
+    else:
+        for node in new_tree[visited[-1]]:
+            if node in visited:
+                pass
+            else:
+                print(node)
+                visited.append(node)
+                traverse_tree(new_tree,visited)
+
+print("Traverse a Tree")
+traverse_tree(new_tree)
