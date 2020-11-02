@@ -158,35 +158,62 @@ addEdge(new_graph,"B","I")
 addEdge(new_graph,"B","H")
 addEdge(new_graph,"H","G")
 
-print("Path")
-graphDFS(new_graph,"A","G")
-graphDFS(new_graph,"B","G")
-print("No Path")
-graphDFS(new_graph,"H","A")
-
-print("Path")
-graphBFS(new_graph,"A","G")
-graphBFS(new_graph,"B","G")
-print("No Path")
-graphBFS(new_graph,"H","A")
+# print("Path")
+# graphDFS(new_graph,"A","G")
+# graphDFS(new_graph,"B","G")
+# print("No Path")
+# graphDFS(new_graph,"H","A")
+#
+# print("Path")
+# graphBFS(new_graph,"A","G")
+# graphBFS(new_graph,"B","G")
+# print("No Path")
+# graphBFS(new_graph,"H","A")
 
 
 #Object based Graph
+class Graph(object):
+    def __init__(self):
+        self.nodes = {}
+
+    def addNodeToGraph(self,val):
+        if val not in self.nodes.keys():
+            self.nodes[val] = []
+
+    def addEdge(self,parent,child):
+        if child not in self.nodes[parent]:
+            self.nodes[parent].append(child)
+
+    def depthFirstSearch(self,source,dest,visited=None):
+        if visited is None:
+            visited = [source]
+        if source == dest:
+            print(visited)
+        else:
+            for node in self.nodes[source]:
+                if node not in visited:
+                    self.depthFirstSearch(node,dest,visited+[node])
+
+new_graph = Graph()
+nodes = "ABCDEFGHIJK"
+for letter in nodes:
+    new_graph.addNodeToGraph(letter)
+
+new_graph.addEdge("A","B")
+new_graph.addEdge("B","C")
+new_graph.addEdge("C","D")
+new_graph.addEdge("B","E")
+new_graph.addEdge("B","H")
+new_graph.addEdge("H","I")
+new_graph.addEdge("J","K")
+new_graph.addEdge("K","B")
+new_graph.addEdge("K","A")
+new_graph.addEdge("K","A")
+new_graph.addEdge("K","K")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#print("Paths found For obj")
+#print(new_graph.depthFirstSearch("A","H"))
 
 
 ##############################################
@@ -194,3 +221,203 @@ graphBFS(new_graph,"H","A")
 ####### *********** DSA_Trie *********** #####
 ####### ******************************** #####
 ##############################################
+
+class Node(object):
+    def __init__(self,val):
+        self.val = val
+        self.children = []
+
+class Trie(object):
+    def __init__(self):
+        self.root_nodes = []
+
+    def addWord(self,word):
+        current_node = None
+        for letter in word:
+            if current_node is None:
+                for node in self.root_nodes:
+                    if letter == node.val:
+                        current_node = node
+                        break
+                current_node = Node(letter)
+                self.root_nodes.append(current_node)
+            else:
+                for node in current_node.children:
+                    if node.val == letter:
+                        current_node = node
+                        break
+                new_node = Node(letter)
+                current_node.children.append(new_node)
+                current_node = new_node
+
+    def findWord(self,word,current_node=None):
+        for letter in word:
+
+            if current_node is None:
+                looping_nodes = self.root_nodes
+            else:
+                looping_nodes = current_node.children
+
+            for node in looping_nodes:
+                if node.val == letter:
+                    if len(word) >1:
+                        return self.findWord(word[1:],node)
+                    else:
+                        return True
+        return False
+
+
+
+# new_trie = Trie()
+# new_trie.addWord("letter")
+# print(new_trie.findWord("letter"))
+
+########################################
+#### Different Trie Implementation #####
+########################################
+
+class Node(object):
+    def __init__(self,is_complete_word=False):
+        self.children = {}
+
+class Trie(object):
+
+    def __init__(self):
+        self.root = Node()
+
+    def addWord(self,word,current_node=None):
+        if current_node is None:
+            current_node = self.root
+
+        try:
+            if word[0] in current_node.children.keys():
+                next_node = current_node.children[word[0]]
+            else:
+                next_node = Node()
+                current_node.children[word[0]] = next_node
+
+            self.addWord(word=word[1:],current_node=next_node)
+        except:
+            return
+
+
+    def findWord(self,word,current_node=None):
+        if current_node is None:
+             current_node = self.root
+
+        if word[0] in current_node.children.keys():
+            try:
+                return self.findWord(word[1:], current_node.children[word[0]])
+            except:
+                return True
+        else:
+            return False
+
+
+
+#Adding Words
+new_trie = Trie()
+new_trie.addWord("letter")
+new_trie.addWord("long")
+new_trie.addWord("laughter")
+
+#Finding words
+# print("Find Words")
+# print(new_trie.findWord("letter"))
+# print(new_trie.findWord("lx"))
+
+##############################################
+####### ******************************** #####
+####### ******** DSA_LinkedList ******** #####
+####### ******************************** #####
+##############################################
+
+
+class Node(object):
+    def __init__(self,val):
+        self.val = val
+        self.prev = None
+        self.next = None
+
+
+class LinkedList(object):
+    def __init__(self):
+        self.root = None
+        self.tail = None
+
+
+    def addNode(self,val):
+
+        new_node = Node(val)
+
+        if self.root is None:
+            self.root = new_node
+            self.tail = new_node
+            self.tail.prev = new_node
+
+        else:
+            new_node.next = self.root
+            self.root.prev = new_node
+            self.root = new_node
+
+    def traverseLinkedList(self):
+        current_node = self.root
+        while current_node is not None:
+            print(current_node.val)
+            current_node = current_node.next
+
+    def printReverseLinkedList(self):
+        current_node = self.tail
+        while current_node is not None:
+            print(current_node.val)
+            current_node = current_node.prev
+
+
+    def deleteNode(self,val):
+        current_node = self.root
+        while current_node is not None:
+            if current_node.val == val:
+                if current_node == self.root:
+                    if current_node.next:
+                        self.root = current_node.next
+                    else:
+                        self.root = None
+
+                    break
+
+                if current_node == self.tail:
+                    if self.tail.prev:
+                        self.tail.prev.next = None
+                        self.tail = self.tail.prev
+
+                    else:
+                        self.tail = None
+                else:
+
+                    current_node.prev.next = current_node.next
+                    current_node.next.prev = current_node.prev
+                break
+            else:
+                current_node = current_node.next
+
+
+
+new_linked_list = LinkedList()
+new_linked_list.addNode(1)
+new_linked_list.addNode(2)
+new_linked_list.addNode(3)
+new_linked_list.addNode(4)
+new_linked_list.addNode(5)
+
+#Testing out different ways of manipulating a linked list
+# new_linked_list.traverseLinkedList()
+# print("Deleted")
+# new_linked_list.deleteNode(3)
+# new_linked_list.deleteNode(2)
+# print(new_linked_list.root.val)
+# print(new_linked_list.tail.val)
+# new_linked_list.deleteNode(5)
+# new_linked_list.deleteNode(1)
+# new_linked_list.deleteNode(4)
+#
+# new_linked_list.traverseLinkedList()
