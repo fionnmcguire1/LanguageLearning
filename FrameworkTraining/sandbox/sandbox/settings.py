@@ -15,15 +15,14 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'hyd$x9a=0nj-6qa+ow0$r_*1hh*_t@$8tml@j#0dm5-p@^z&t5'
-
 with open('sandbox/secret_key.txt') as f:
-    SECRET_KEY = f.read().strip()
+    text = f.read()
+    keys = text.splitlines()
+    SECRET_KEY = keys[0]
+    API_KEY = keys[1]
+    API_SECRET_KEY = keys[2]
+    BEARER_TOKEN = keys[3]
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -55,10 +55,19 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'sandbox.urls'
 
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['gym_tracker/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

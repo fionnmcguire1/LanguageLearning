@@ -1,0 +1,8 @@
+<h1>Workouts</h1>
+<ul>
+{% for workout in object_list %}
+    <li>{{ workout.name }}</li>
+{% empty %}
+    <li>No workouts yet.</li>
+{% endfor %}
+</ul>
