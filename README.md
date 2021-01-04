@@ -6,3 +6,6 @@
 
 # Framework Training
 * Contains multiple sub repositories for learning and becoming familiar with a series of frameworks and tools.
+
+# Library Training
+* Contains multiple sub repositories for learning and becoming familiar with a series of python libraries.
