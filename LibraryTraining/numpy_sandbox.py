@@ -117,3 +117,36 @@ print(a)
 #NB
 # When creating a variable via reference, you need to be aware
 # the origional will be manipul;ated along side the new variable
+
+print("Basic array operations")
+#Add the contents of two arrays
+data = np.array([1,2])
+ones = np.ones(2,dtype=int)
+print(data+ones)
+#All other arithmetic operations
+print(data-ones)
+print(data*data)
+print(data/data)
+
+
+#Sum the axis
+b = np.array([[1,1],[2,2]])
+print(b.sum(axis=0))
+print(b.sum(axis=1))
+
+#axis 0 is x axis
+#axis 1 is y axis
+
+#Boradcasting is the numpy mechanism of performing an action on every cell
+print(b*5)
+
+
+print("Aggregation")
+numpy_array = np.array([1,2,3,4,5,6,7,56,4,3,23,23,2,12,1,4,5,3,2,235,235,23,12,34,213,123,125])
+print(np.sort(numpy_array))
+print(numpy_array.max())
+print(numpy_array.min())
+print(numpy_array.sum())
+print(numpy_array.mean())
+print(numpy_array.std())
+print(numpy_array.prod())
